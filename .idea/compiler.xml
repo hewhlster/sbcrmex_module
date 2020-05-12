@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="sbcrmex_authorization" />
+        <module name="sbcrmex_commons" />
+        <module name="sbcrmex_customer" />
+        <module name="sbcrmex_domain" />
+        <module name="sbcrmex_report" />
+        <module name="sbcrmex_sale" />
+        <module name="sbcrmex_service" />
+        <module name="sbcrmex_system" />
+        <module name="sbcrmex_user" />
+        <module name="sbcrmex_user (1)" />
+        <module name="sbcrmex_web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="sbcrmex_authorization" target="1.8" />
+      <module name="sbcrmex_commons" target="1.8" />
+      <module name="sbcrmex_customer" target="1.8" />
+      <module name="sbcrmex_domain" target="1.8" />
+      <module name="sbcrmex_module" target="1.8" />
+      <module name="sbcrmex_report" target="1.8" />
+      <module name="sbcrmex_sale" target="1.8" />
+      <module name="sbcrmex_service" target="1.8" />
+      <module name="sbcrmex_system" target="1.8" />
+      <module name="sbcrmex_user" target="1.8" />
+      <module name="sbcrmex_user (1)" target="1.8" />
+      <module name="sbcrmex_web" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fjh.dao.ServiceMapper">
+    <resultMap id="BaseResultMap" type="org.fjh.entity.Service">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="createdate" jdbcType="TIMESTAMP" property="createdate"/>
+        <result column="modifydate" jdbcType="TIMESTAMP" property="modifydate"/>
+        <result column="cid" jdbcType="VARCHAR" property="cid"/>
+        <result column="stid" jdbcType="VARCHAR" property="stid"/>
+        <result column="summary" jdbcType="VARCHAR" property="summary"/>
+        <result column="status" jdbcType="VARCHAR" property="status"/>
+        <result column="detail" jdbcType="VARCHAR" property="detail"/>
+        <result column="cuid" jdbcType="VARCHAR" property="cuid"/>
+        <result column="fauid" jdbcType="VARCHAR" property="fauid"/>
+        <result column="facreatetime" jdbcType="TIMESTAMP" property="facreatetime"/>
+        <result column="fduid" jdbcType="VARCHAR" property="fduid"/>
+        <result column="fdcreatetime" jdbcType="TIMESTAMP" property="fdcreatetime"/>
+        <result column="fresult" jdbcType="VARCHAR" property="fresult"/>
+        <result column="fsatisfy" jdbcType="INTEGER" property="fsatisfy"/>
+
+<!--
+        创建者
+-->
+        <association property="cuser" column="cuid" select="org.fjh.dao.UserMapper.selectByPrimaryKey" fetchType="lazy"
+                     />
+
+        <!--
+                服务满意调查指派者
+        -->
+        <association property="fauser" column="fauid" select="org.fjh.dao.UserMapper.selectByPrimaryKey" fetchType="lazy"
+        />
+
+
+        <!--
+                服务满意调查实施者
+        -->
+        <association property="fauser" column="fduid" select="org.fjh.dao.UserMapper.selectByPrimaryKey" fetchType="lazy"
+        />
+
+<!--
+        分配者
+-->
+        <association property="fduser" column="fdid" select="org.fjh.dao.UserMapper.selectByPrimaryKey" fetchType="lazy"
+        />
+<!--
+        实施者
+-->
+        <association property="duser" column="duid" select="org.fjh.dao.UserMapper.selectByPrimaryKey" fetchType="lazy"
+        />
+        <!--
+        服务的客户
+-->
+        <association property="customer" column="cid" select="org.fjh.dao.CustomerMapper.selectByPrimaryKey" fetchType="lazy"
+        />
+
+        <!--具体服务项目-->
+        <collection property="items" column="id" select="org.fjh.dao.ServiceItemsMapper.selectBySid" fetchType="lazy" />
+
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, createdate, modifydate, cid, stid, summary, status, detail, cuid, fauid, facreatetime, 
+    fduid, fdcreatetime, fresult, fsatisfy
+  </sql>
+    <select id="selectByExample" parameterType="org.fjh.entity.ServiceExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from tbl_service
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tbl_service
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_service
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <delete id="deleteByExample" parameterType="org.fjh.entity.ServiceExample">
+        delete from tbl_service
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="org.fjh.entity.Service">
+    insert into tbl_service (id, createdate, modifydate, 
+      cid, stid, summary, 
+      status, detail, cuid, 
+      fauid, facreatetime, fduid, 
+      fdcreatetime, fresult, fsatisfy
+      )
+    values (#{id,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{modifydate,jdbcType=TIMESTAMP}, 
+      #{cid,jdbcType=VARCHAR}, #{stid,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR}, #{cuid,jdbcType=VARCHAR}, 
+      #{fauid,jdbcType=VARCHAR}, #{facreatetime,jdbcType=TIMESTAMP}, #{fduid,jdbcType=VARCHAR}, 
+      #{fdcreatetime,jdbcType=TIMESTAMP}, #{fresult,jdbcType=VARCHAR}, #{fsatisfy,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="org.fjh.entity.Service">
+        insert into tbl_service
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createdate != null">
+                createdate,
+            </if>
+            <if test="modifydate != null">
+                modifydate,
+            </if>
+            <if test="cid != null">
+                cid,
+            </if>
+            <if test="stid != null">
+                stid,
+            </if>
+            <if test="summary != null">
+                summary,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="detail != null">
+                detail,
+            </if>
+            <if test="cuid != null">
+                cuid,
+            </if>
+            <if test="fauid != null">
+                fauid,
+            </if>
+            <if test="facreatetime != null">
+                facreatetime,
+            </if>
+            <if test="fduid != null">
+                fduid,
+            </if>
+            <if test="fdcreatetime != null">
+                fdcreatetime,
+            </if>
+            <if test="fresult != null">
+                fresult,
+            </if>
+            <if test="fsatisfy != null">
+                fsatisfy,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="createdate != null">
+                #{createdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifydate != null">
+                #{modifydate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cid != null">
+                #{cid,jdbcType=VARCHAR},
+            </if>
+            <if test="stid != null">
+                #{stid,jdbcType=VARCHAR},
+            </if>
+            <if test="summary != null">
+                #{summary,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="detail != null">
+                #{detail,jdbcType=VARCHAR},
+            </if>
+            <if test="cuid != null">
+                #{cuid,jdbcType=VARCHAR},
+            </if>
+            <if test="fauid != null">
+                #{fauid,jdbcType=VARCHAR},
+            </if>
+            <if test="facreatetime != null">
+                #{facreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fduid != null">
+                #{fduid,jdbcType=VARCHAR},
+            </if>
+            <if test="fdcreatetime != null">
+                #{fdcreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fresult != null">
+                #{fresult,jdbcType=VARCHAR},
+            </if>
+            <if test="fsatisfy != null">
+                #{fsatisfy,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="org.fjh.entity.ServiceExample" resultType="java.lang.Long">
+        select count(*) from tbl_service
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update tbl_service
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=VARCHAR},
+            </if>
+            <if test="record.createdate != null">
+                createdate = #{record.createdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.modifydate != null">
+                modifydate = #{record.modifydate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.cid != null">
+                cid = #{record.cid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.stid != null">
+                stid = #{record.stid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.summary != null">
+                summary = #{record.summary,jdbcType=VARCHAR},
+            </if>
+            <if test="record.status != null">
+                status = #{record.status,jdbcType=VARCHAR},
+            </if>
+            <if test="record.detail != null">
+                detail = #{record.detail,jdbcType=VARCHAR},
+            </if>
+            <if test="record.cuid != null">
+                cuid = #{record.cuid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fauid != null">
+                fauid = #{record.fauid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.facreatetime != null">
+                facreatetime = #{record.facreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.fduid != null">
+                fduid = #{record.fduid,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fdcreatetime != null">
+                fdcreatetime = #{record.fdcreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.fresult != null">
+                fresult = #{record.fresult,jdbcType=VARCHAR},
+            </if>
+            <if test="record.fsatisfy != null">
+                fsatisfy = #{record.fsatisfy,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update tbl_service
+        set id = #{record.id,jdbcType=VARCHAR},
+        createdate = #{record.createdate,jdbcType=TIMESTAMP},
+        modifydate = #{record.modifydate,jdbcType=TIMESTAMP},
+        cid = #{record.cid,jdbcType=VARCHAR},
+        stid = #{record.stid,jdbcType=VARCHAR},
+        summary = #{record.summary,jdbcType=VARCHAR},
+        status = #{record.status,jdbcType=VARCHAR},
+        detail = #{record.detail,jdbcType=VARCHAR},
+        cuid = #{record.cuid,jdbcType=VARCHAR},
+        fauid = #{record.fauid,jdbcType=VARCHAR},
+        facreatetime = #{record.facreatetime,jdbcType=TIMESTAMP},
+        fduid = #{record.fduid,jdbcType=VARCHAR},
+        fdcreatetime = #{record.fdcreatetime,jdbcType=TIMESTAMP},
+        fresult = #{record.fresult,jdbcType=VARCHAR},
+        fsatisfy = #{record.fsatisfy,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="org.fjh.entity.Service">
+        update tbl_service
+        <set>
+            <if test="createdate != null">
+                createdate = #{createdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifydate != null">
+                modifydate = #{modifydate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cid != null">
+                cid = #{cid,jdbcType=VARCHAR},
+            </if>
+            <if test="stid != null">
+                stid = #{stid,jdbcType=VARCHAR},
+            </if>
+            <if test="summary != null">
+                summary = #{summary,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="detail != null">
+                detail = #{detail,jdbcType=VARCHAR},
+            </if>
+            <if test="cuid != null">
+                cuid = #{cuid,jdbcType=VARCHAR},
+            </if>
+            <if test="fauid != null">
+                fauid = #{fauid,jdbcType=VARCHAR},
+            </if>
+            <if test="facreatetime != null">
+                facreatetime = #{facreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fduid != null">
+                fduid = #{fduid,jdbcType=VARCHAR},
+            </if>
+            <if test="fdcreatetime != null">
+                fdcreatetime = #{fdcreatetime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="fresult != null">
+                fresult = #{fresult,jdbcType=VARCHAR},
+            </if>
+            <if test="fsatisfy != null">
+                fsatisfy = #{fsatisfy,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.fjh.entity.Service">
+    update tbl_service
+    set createdate = #{createdate,jdbcType=TIMESTAMP},
+      modifydate = #{modifydate,jdbcType=TIMESTAMP},
+      cid = #{cid,jdbcType=VARCHAR},
+      stid = #{stid,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      cuid = #{cuid,jdbcType=VARCHAR},
+      fauid = #{fauid,jdbcType=VARCHAR},
+      facreatetime = #{facreatetime,jdbcType=TIMESTAMP},
+      fduid = #{fduid,jdbcType=VARCHAR},
+      fdcreatetime = #{fdcreatetime,jdbcType=TIMESTAMP},
+      fresult = #{fresult,jdbcType=VARCHAR},
+      fsatisfy = #{fsatisfy,jdbcType=INTEGER}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <select id="listPage" resultMap="BaseResultMap">
+        select *from tbl_service
+        <where>
+            <if test="params!=null">
+                <foreach collection="params.keys" item="key" separator="and">
+                    <if test="params[key]!=null">
+                        ${key} like concat("%",#{params[${key}]},"%")
+                    </if>
+                </foreach>
+            </if>
+        </where>
+        order by createdate
+    </select>
+
+</mapper>

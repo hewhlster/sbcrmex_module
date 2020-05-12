@@ -1,0 +1,71 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<base th:href="${#request.getContextPath()}+'/'">
+
+<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        服务管理
+        <small>列表</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">服务管理</li>
+    </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+    <!-- bootstarpTable表格工具栏,结合jackown.js使用 -->
+    <div id="toolbar">
+        <div class="pull-left">
+            <div class="btn-group">
+                <button id="btn_service_new" onclick="showModal(0)" type="button"
+                        class="btn btn-success btn-space">
+                    <span aria-hidden="true" class="btn-icon-space">新增</span>
+                </button>
+            </div>
+        </div>
+
+
+        <div class="pull-right">
+            <form class="form-inline" role="form">
+                <input name="optCstName" id="opt_CstName" placeholder='客户名称'
+                       type="text" class="form-control"> <input
+                    name="optLkmName" id="opt_LkmName" placeholder='联系人' type="text"
+                    class="form-control">
+
+                <div class="btn-group">
+                    <button id="btn_search" type="button"
+                            class="btn btn-warning btn-space">
+								<span class="fa fa-search btn-icon-space" aria-hidden="true"
+                                >查询</span>
+
+                    </button>
+                    <button id="btn_reset" type="button"
+                            class="btn btn-info btn-space">
+								<span class="fa fa-eraser btn-icon-space" aria-hidden="true"
+                                >重置</span>
+
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <!-- toolbar -->
+
+
+    <!-- 数据表格 -->
+    <table id="service_list_table"></table>
+    </div>
+
+</section>
+<!-- 增加服务dialog -->
+<div data-th-include="service/add-dialog"></div>
+<div data-th_include="service/service-info-dialog"></div>
+
+<script type="text/javascript" data-th-src="@{js/service/list.js}"></script>
+<script type="text/javascript" data-th-src="@{js/service/service_info_dialog.js}"></script>
+
+

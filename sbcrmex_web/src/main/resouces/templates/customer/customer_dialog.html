@@ -1,0 +1,122 @@
+<!-- 客户信息modal -->
+<div class="modal fade" id="customerdialog" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">客户信息</h4>
+            </div>
+            <div class="modal-body">
+                <!-- Modal -->
+                <form id="clientAddForm" class="form-horizontal center-block"
+                      role="form">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">客户编号</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" readonly=readonly
+                                   id="cstNo" name="cstNo" style="color: red"/>
+                        </div>
+                        <div class="inscop">
+                            <label for="cstManager" class="col-sm-2 control-label">主要联系人</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="cstManager"
+                                       id="cstManager"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="inscop">
+                            <label for="cstName" class="col-sm-2 control-label">客户名称</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="cstName"
+                                       id="cstName"/>
+                            </div>
+                        </div>
+                        <label for="inputPassword3" class="col-sm-2 control-label">信用度</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" name="cstRredit" id="cstRredit">
+                                <option value="1">☆</option>
+                                <option value="2">☆☆</option>
+                                <option value="3">☆☆☆</option>
+                                <option value="4">☆☆☆☆</option>
+                                <option value="5">☆☆☆☆☆</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="inscop">
+                            <label for="cstRegion" class="col-sm-2 control-label">地区</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="cstRegion"
+                                       id="cstRegion"/>
+                            </div>
+                        </div>
+                        <label for="cstSatisfy" class="col-sm-2 control-label">满意度</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" name="cstSatisfy" id="cstSatisfy">
+                                <option value="1">☆</option>
+                                <option value="2">☆☆</option>
+                                <option value="3">☆☆☆</option>
+                                <option value="4">☆☆☆☆</option>
+                                <option value="5">☆☆☆☆☆</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="inscop">
+                            <label for="cstTel" class="col-sm-2 control-label">联系电话</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="cstTel"
+                                       id="cstTel"/>
+                            </div>
+                        </div>
+                        <label for="cstLevel" class="col-sm-2 control-label">客户等级</label>
+                        <div class="col-sm-4">
+                            <select class="form-control" name="cstLevel" id="cstLevel">
+                                <option value="1">小客户</option>
+                                <option value="2">普通客户</option>
+                                <option value="3">大客户</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group inscop">
+                        <label for="cstAddr" class="col-sm-2 control-label">公司地址</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control " name="cstAddr"
+                                   id="cstAddr"/>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group inscop">
+                        <label for="cstWeb" class="col-sm-2 control-label">网址</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control " name="cstWeb"
+                                   id="cstWeb"/>
+                        </div>
+                    </div>
+                    <div class="form-group inscop">
+                        <label for="cstRemark" class="col-sm-2 control-label">备注</label>
+                        <div class="col-sm-10">
+								<textarea name="cstRemark" id="cstRemark" class="form-control"
+                                          rows="3" style="resize: none;"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- modal-body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-sm btn-warning " id="btnsubmit">提交更改</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script data-th-inculde="@{js/customer/customer_dialog.js}"></script>
+	

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="sbcrmex_web:war">
+    <output-path>$PROJECT_DIR$/sbcrmex_web/target</output-path>
+    <root id="archive" name="sbcrmex_web-0.6.1.war">
+      <element id="artifact" artifact-name="sbcrmex_web:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,83 @@
+<!-- 客户信息modal -->
+<div class="modal fade" id="customer_linkman_dialog" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">客户联系人</h4>
+            </div>
+            <div class="modal-body">
+                <!-- Modal -->
+                <form id="frmlinkman" class="form-horizontal center-block"
+                      role="form">
+                    <input type="hidden" name="lkmCustNo" id="lkmCustNo"/>
+                    <div class="form-group">
+                        <label for="lkmNo" class="col-sm-2 control-label">联系人编号</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" readonly=readonly
+                                   id="lkmNo" name="lkmNo" style="color: red"/>
+                        </div>
+                        <div class="inscop">
+                            <label for="lkmName" class="col-sm-2 control-label">姓名</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="lkmName"
+                                       id="lkmName"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="inscop">
+                            <label for="lkmPostion" class="col-sm-2 control-label">职务</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="lkmPostion"
+                                       id="lkmPostion"/>
+                            </div>
+                        </div>
+                        <div class="inscop">
+                            <label for="lkmPostion" class="col-sm-2 control-label">性别</label>
+                            <div class="col-sm-4">
+                                <select name="lkmSex" id="lkmSex" class="form-control">
+                                    <option>男</option>
+                                    <option>女</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="inscop">
+                            <label for="lkmTel" class="col-sm-2 control-label">联系电话</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" name="lkmTel"
+                                       id="lkmTel"/>
+                            </div>
+                        </div>
+                        <label for="lkmMobile" class="col-sm-2 control-label">手机</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" name="lkmMobile"
+                                   id="lkmMobile"/>
+                        </div>
+                    </div>
+
+                    <div class="form-group inscop">
+                        <label for="lkmMemo" class="col-sm-2 control-label">备注</label>
+                        <div class="col-sm-10">
+								<textarea name="lkmMemo" id="lkmMemo" class="form-control"
+                                          rows="3" style="resize: none;"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- modal-body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-sm btn-warning " id="btn_new_customer_linkman_submit">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script data-th-src="@{js/customer/customer_linkman_dialog.js}"></script>
+	

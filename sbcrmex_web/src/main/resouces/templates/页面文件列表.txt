@@ -1,0 +1,77 @@
+│  login.html
+│  main.html
+│  menu.txt
+│  页面文件列表.txt
+│
+├─basic
+│  │  product-view.html
+│  │
+│  ├─order
+│  │      order_items_dialog.html
+│  │      order_view.html
+│  │
+│  └─product
+│          product_view.html
+│
+├─customer
+│  │  customer_detail_dialog.html
+│  │  customer_dialog.html
+│  │  customer_history_communication_add_dialog.html
+│  │  customer_history_communication_list_dialog.html
+│  │  customer_linkman_dialog.html
+│  │  customer_list_dialog.html
+│  │  customer_view.html
+│  │
+│  ├─lost
+│  │      customer_lost_history_communication_add_dialog.html
+│  │      customer_lost_history_communication_list_dialog.html
+│  │      customer_lost_view.html
+│  │
+│  └─order
+│          customer_history_orders_dialog.html
+│
+├─log
+│      log_view.html
+│
+├─report
+│      report_customer_compose_view.html
+│      report_customer_contribution_view.html
+│      report_customer_lose_view.html
+│      report_customer_service_view.html
+│      报表模块前端文件列表.txt
+│
+├─resource
+│      resource_dialog.html
+│      resource_dispatcher_dialog.html
+│      resource_view.html
+│
+├─role
+│      role_dialog.html
+│      role_resource_dispather_dialog.html
+│      role_view.html
+│
+├─salechance
+│      add_dialog.html
+│      salechance_view.html
+│
+├─saleplan
+│      saleplan_dialog.html
+│      saleplan_view.html
+│
+├─service
+│      add-dialog.html
+│      detail-dialog.html
+│      detail.html
+│      distribution.html
+│      feedback-dialog.html
+│      feedback.html
+│      file.html
+│      list.html
+│      service-info-dialog.html
+│      服务模块前端文件列表.txt
+│
+└─user
+        user_center_view.html
+        user_dialog.html
+        user_list_dialog.html
+        user_view.html

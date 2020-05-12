@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fjh.dao.CustomerLinkmanMapper">
+    <resultMap id="BaseResultMap" type="org.fjh.entity.CustomerLinkman">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="createdate" jdbcType="TIMESTAMP" property="createdate"/>
+        <result column="updatedate" jdbcType="TIMESTAMP" property="updatedate"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="tel1" jdbcType="VARCHAR" property="tel1"/>
+        <result column="tel2" jdbcType="VARCHAR" property="tel2"/>
+        <result column="tel3" jdbcType="VARCHAR" property="tel3"/>
+        <result column="memo" jdbcType="VARCHAR" property="memo"/>
+        <result column="cid" jdbcType="VARCHAR" property="cid"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" prefixOverrides="and" suffix=")">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach close=")" collection="criterion.value" item="listItem" open="("
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+    id, createdate, updatedate, name, gender, tel1, tel2, tel3, memo, cid
+  </sql>
+    <select id="selectByExample" parameterType="org.fjh.entity.CustomerLinkmanExample" resultMap="BaseResultMap">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from tbl_customer_linkman
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tbl_customer_linkman
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_customer_linkman
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+    <delete id="deleteByExample" parameterType="org.fjh.entity.CustomerLinkmanExample">
+        delete from tbl_customer_linkman
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="org.fjh.entity.CustomerLinkman">
+    insert into tbl_customer_linkman (id, createdate, updatedate, 
+      name, gender, tel1, 
+      tel2, tel3, memo, cid
+      )
+    values (#{id,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{updatedate,jdbcType=TIMESTAMP}, 
+      #{name,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{tel1,jdbcType=VARCHAR}, 
+      #{tel2,jdbcType=VARCHAR}, #{tel3,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, #{cid,jdbcType=VARCHAR}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="org.fjh.entity.CustomerLinkman">
+        insert into tbl_customer_linkman
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="createdate != null">
+                createdate,
+            </if>
+            <if test="updatedate != null">
+                updatedate,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="tel1 != null">
+                tel1,
+            </if>
+            <if test="tel2 != null">
+                tel2,
+            </if>
+            <if test="tel3 != null">
+                tel3,
+            </if>
+            <if test="memo != null">
+                memo,
+            </if>
+            <if test="cid != null">
+                cid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="createdate != null">
+                #{createdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedate != null">
+                #{updatedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="name != null">
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="tel1 != null">
+                #{tel1,jdbcType=VARCHAR},
+            </if>
+            <if test="tel2 != null">
+                #{tel2,jdbcType=VARCHAR},
+            </if>
+            <if test="tel3 != null">
+                #{tel3,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null">
+                #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="cid != null">
+                #{cid,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="org.fjh.entity.CustomerLinkmanExample" resultType="java.lang.Long">
+        select count(*) from tbl_customer_linkman
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update tbl_customer_linkman
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=VARCHAR},
+            </if>
+            <if test="record.createdate != null">
+                createdate = #{record.createdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.updatedate != null">
+                updatedate = #{record.updatedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.name != null">
+                name = #{record.name,jdbcType=VARCHAR},
+            </if>
+            <if test="record.gender != null">
+                gender = #{record.gender,jdbcType=VARCHAR},
+            </if>
+            <if test="record.tel1 != null">
+                tel1 = #{record.tel1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.tel2 != null">
+                tel2 = #{record.tel2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.tel3 != null">
+                tel3 = #{record.tel3,jdbcType=VARCHAR},
+            </if>
+            <if test="record.memo != null">
+                memo = #{record.memo,jdbcType=VARCHAR},
+            </if>
+            <if test="record.cid != null">
+                cid = #{record.cid,jdbcType=VARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update tbl_customer_linkman
+        set id = #{record.id,jdbcType=VARCHAR},
+        createdate = #{record.createdate,jdbcType=TIMESTAMP},
+        updatedate = #{record.updatedate,jdbcType=TIMESTAMP},
+        name = #{record.name,jdbcType=VARCHAR},
+        gender = #{record.gender,jdbcType=VARCHAR},
+        tel1 = #{record.tel1,jdbcType=VARCHAR},
+        tel2 = #{record.tel2,jdbcType=VARCHAR},
+        tel3 = #{record.tel3,jdbcType=VARCHAR},
+        memo = #{record.memo,jdbcType=VARCHAR},
+        cid = #{record.cid,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="org.fjh.entity.CustomerLinkman">
+        update tbl_customer_linkman
+        <set>
+            <if test="createdate != null">
+                createdate = #{createdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updatedate != null">
+                updatedate = #{updatedate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="tel1 != null">
+                tel1 = #{tel1,jdbcType=VARCHAR},
+            </if>
+            <if test="tel2 != null">
+                tel2 = #{tel2,jdbcType=VARCHAR},
+            </if>
+            <if test="tel3 != null">
+                tel3 = #{tel3,jdbcType=VARCHAR},
+            </if>
+            <if test="memo != null">
+                memo = #{memo,jdbcType=VARCHAR},
+            </if>
+            <if test="cid != null">
+                cid = #{cid,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="org.fjh.entity.CustomerLinkman">
+    update tbl_customer_linkman
+    set createdate = #{createdate,jdbcType=TIMESTAMP},
+      updatedate = #{updatedate,jdbcType=TIMESTAMP},
+      name = #{name,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=VARCHAR},
+      tel1 = #{tel1,jdbcType=VARCHAR},
+      tel2 = #{tel2,jdbcType=VARCHAR},
+      tel3 = #{tel3,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      cid = #{cid,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+
+    <select id="listPage" resultMap="BaseResultMap">
+        select *from tbl_customer_linkman
+        <where>
+            <if test="params!=null">
+                <foreach collection="params.keys" item="key" separator="and">
+                    <if test="params[key]!=null">
+                        ${key} like concat("%",#{params[${key}]},"%")
+                    </if>
+                </foreach>
+            </if>
+        </where>
+        order by createdate
+    </select>
+
+</mapper>

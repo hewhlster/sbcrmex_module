@@ -1,0 +1,143 @@
+<div id="customer_detail_dialog" class="modal fade bs-example-modal-lg"
+     tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">客户信息</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="panel  panel-info">
+                    <div class="panel-heading">客户信息</div>
+                    <div class="panel-body">
+                        <!-- Modal -->
+                        <form id="clientDetailFrm" class="form-horizontal center-block"
+                              role="form">
+                            <div class="form-group">
+                                <label for="code" class="col-sm-2 control-label">客户编号</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" readonly=readonly
+                                           id="code" name="code" style="color: red"/>
+                                </div>
+                                <div class="inscop">
+                                    <label for="manager" class="col-sm-2 control-label">主要联系人</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="manager"
+                                               id="manager" readonly=readonly/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="inscop">
+                                    <label for="name" class="col-sm-2 control-label">客户名称</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="name"
+                                               id="name" readonly=readonly/>
+                                    </div>
+                                </div>
+                                <label for="level" class="col-sm-2 control-label">信用度</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" name="level" id="level" disabled="disabled">
+                                        <option value="1">☆</option>
+                                        <option value="2">☆☆</option>
+                                        <option value="3">☆☆☆</option>
+                                        <option value="4">☆☆☆☆</option>
+                                        <option value="5">☆☆☆☆☆</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="inscop">
+                                    <label for="addr" class="col-sm-2 control-label">地区</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="addr"
+                                               id="addr" readonly=readonly/>
+                                    </div>
+                                </div>
+                                <label for="cstSatisfy" class="col-sm-2 control-label">满意度</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" name="cstSatisfy" id="cstSatisfy" disabled="disabled">
+                                        <option value="1">☆</option>
+                                        <option value="2">☆☆</option>
+                                        <option value="3">☆☆☆</option>
+                                        <option value="4">☆☆☆☆</option>
+                                        <option value="5">☆☆☆☆☆</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="inscop">
+                                    <label for="tel" class="col-sm-2 control-label">联系电话</label>
+                                    <div class="col-sm-4">
+                                        <input type="text" class="form-control" name="tel"
+                                               id="tel" readonly=readonly/>
+                                    </div>
+                                </div>
+                                <label for="level" class="col-sm-2 control-label">客户等级</label>
+                                <div class="col-sm-4">
+                                    <select class="form-control" name="level" id="level" disabled="disabled">
+                                        <option value="1">小客户</option>
+                                        <option value="2">普通客户</option>
+                                        <option value="3">大客户</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group inscop">
+                                <label for="addr" class="col-sm-2 control-label">公司地址</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control " name="addr"
+                                           id="addr" readonly=readonly/>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group inscop">
+                                <label for="web" class="col-sm-2 control-label">网址</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control " name="web"
+                                           id="web" readonly=readonly/>
+                                </div>
+                            </div>
+                            <div class="form-group inscop">
+                                <label for="memo" class="col-sm-2 control-label">备注</label>
+                                <div class="col-sm-10">
+								<textarea name="memo" id="memo" class="form-control"
+                                          rows="3" style="resize: none;" readonly=readonly></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <ul class="nav nav-list">
+                    <li class="divider"></li>
+                </ul>
+                <div class="panel panel-info">
+                    <div class="panel-heading">客户相关联系人</div>
+                    <div class="panel-body">
+                        <button class="btn btn-danger" id="btn_new_customer_linkman">增加联系人</button>
+                        <br>
+                        <table id="customer_linkman_tbl"></table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default "
+                        data-dismiss="modal" id="btn_close">关闭
+                </button>
+                <button type="button" class="btn btn-sm btn-warning "
+                        id="btn_saveorupdate">提交
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+<div data-th-include="customer/customer_linkman_dialog"></div>
+<script data-th-src="@{js/customer/customer_detail_dialog.js}"></script>

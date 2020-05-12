@@ -1,0 +1,310 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<base th:href="${#request.getContextPath()}+'/'">
+
+<head>
+    <meta charset="UTF-8">
+    <title>客户贡献分析</title>
+</head>
+<body>
+<!--
+
+    统一思路
+
+    1.打开页面后使用AJAX加载数据
+        1.1绑定隐藏DIV的显示事件和隐藏事件
+        1.2初始化控件值
+    2.分页采用插件(bootstrapTable)
+    3.每页面都有一个隐藏DIV,使用bootstrap dialog
+    3.新建，编辑，详细 按钮按下都弹出隐藏DIV,采用showModal（type,no）方法
+            //type:显示方式 0：新建 1：编辑 2:查看
+            //no：要显示数据有ID
+
+            showModal()
+            1.初始化控件数据
+            2.方法根据type值设定控件的状态，设定标题值
+            3.使用ajax的方式取得数据，并赋值
+ -->
+
+<div class="container-fluid ">
+    <!-- 面包屑导航 -->
+    <div class="row">
+        <ul class="breadcrumb">
+            <li><a href="#">营销管理</a></li>
+            <li class="active"><a href="#">销售计划</a></li>
+        </ul>
+    </div>
+    <!-- bootstarpTable表格工具栏,结合jackown.js使用 -->
+    <div id="toolbar">
+        <div class="pull-right" style="margin-bottom: 5px">
+            <div class="">
+                <div class="btn-group">
+                    <button id="btn_reload" type="button"
+                            class="btn btn-default btn-space">
+							<span class="fa fa-plus-square" aria-hidden="true"
+                                  class="btn-icon-space">刷新</span>
+                    </button>
+                    <button id="btn_back" type="button"
+                            class="btn btn-primary btn-space">
+							<span class="fa fa-plus-square" aria-hidden="true"
+                                  class="btn-icon-space">返回</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both">
+            <div class="pull-left">
+                <div class="btn-group">
+                    <button id="btn_new" onclick="showModal(0)" type="button"
+                            class="btn btn-success btn-space">
+						<span class="fa fa-plus-square" aria-hidden="true"
+                              class="btn-icon-space">新增</span>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="pull-right">
+                <form class="form-inline" role="form">
+                    <input name="optCstName" id="opt_CstName" placeholder='客户名称'
+                           type="text" class="form-control">
+                    <input name="optLkmName"
+                           id="opt_LkmName" placeholder='联系人' type="text"
+                           class="form-control">
+
+                    <div class="btn-group">
+                        <button id="btn_search" type="button"
+                                class="btn btn-warning btn-space">
+							<span class="fa fa-search" aria-hidden="true"
+                                  class="btn-icon-space">查询</span>
+
+                        </button>
+                        <button id="btn_reset" type="button"
+                                class="btn btn-info btn-space">
+							<span class="fa fa-eraser" aria-hidden="true"
+                                  class="btn-icon-space">重置</span>
+
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>        <!-- toolbar -->
+
+
+    <!-- 数据表格 -->
+    <table id="table"></table>
+</div>
+
+
+</body>
+<script type="text/javascript" charset="utf-8">
+    $(function () {
+
+        //刷新
+        $("#btn_reload").click(function () {
+            window.location.href = window.location.href;
+        });
+
+        //返回
+        $("#btn_back").click(function () {
+            window.history.back(-1);
+        });
+
+        //新建按钮
+        $("#btn_new").click(function () {
+            $("#customerdialog").modal();
+        });
+
+        $("#btn_search").click(function () {
+            $("#table").bootstrapTable("refresh");
+        });
+
+
+        $("#btn_reset").click(function () {
+            $("#cstName").val("");
+            $("#table").bootstrapTable("refresh");
+        });
+    });
+    //加载表格数据
+    $("#table").bootstrapTable({
+        url: "<%=basePath%>",
+        method: 'post',                      //请求方式（*）
+        toolbar: '#toolbar',                 //工具按钮用哪个容器
+        striped: true,                      //是否显示行间隔色
+        cache: false,                       //是否使用缓存，默认为true，所以一般情况下需要设置一下这个属性（*）
+        pagination: true,                   //是否显示分页（*）
+        sortable: true,                     //是否启用排序
+        sortOrder: "asc",                   //排序方式
+        sidePagination: "server",           //分页方式：client客户端分页，server服务端分页（*）
+        pageNumber: 1,                      //初始化加载第一页，默认第一页,并记录
+        pageSize: 10,                     //每页的记录行数（*）
+        pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+        // search: true,                      //是否显示表格搜索
+        // strictSearch: true,
+        // showColumns: true,                  //是否显示所有的列（选择显示的列）
+        // showRefresh: true,                  //是否显示刷新按钮
+        minimumCountColumns: 2,             //最少允许的列数
+        clickToSelect: true,                //是否启用点击选中行
+        height: 600,                      //行高，如果没有设置height属性，表格自动根据记录条数觉得表格高度
+        uniqueId: "ID",                     //每一行的唯一标识，一般为主键列
+        showToggle: false,                   //是否显示详细视图和列表视图的切换按钮
+        cardView: false,                    //是否显示详细视图
+        detailView: false,                  //是否显示父子表
+        //得到查询的参数
+        queryParams: function (params) {
+            //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+            var temp = {
+                rows: params.limit,                         //页面大小
+                page: (params.offset / params.limit) + 1,   //页码
+                sort: params.sort,      //排序列名
+                sortOrder: params.order, //排位命令（desc，asc）
+                opt_Cst_Name: $("#opt_CstName").val(),
+                opt_Lkm_Name: $("#opt_LkmName").val()
+            };
+            return temp;
+        },
+        /*
+        onClickRow:function(row,$element,field){
+             alert(row.optNo);
+               $("#planchcid").val(row.optNo);
+        },
+        */
+        columns: [
+            {
+                field: "fff",
+                title: "操作",
+                formatter: function (value, row, index) {
+                    var ret = "";
+                    //0:没指派1：已指派2：关闭3：以完成
+                    switch (row.optStatus) {
+                        //制定计划
+                        case "1":
+                            ret = '<button class="btn btn-success" id="btn1">计划</button>';
+                            break;
+                        //归档
+                        case "2":
+                        case "3":
+                            ret = '<button class="btn btn-success" id="btn2">查看详情</button>';
+                            break;
+                    }
+                    return ret;
+                },
+                events: {
+                    "click #btn1": function (e, value, row, index) {
+                        window.location.href = "<%=basePath%>sale/saleplandetailmv.do?cid=" + row.optNo;
+                    },
+                    "click #btn2": function (e, value, row, index) {
+                        window.location.href = "<%=basePath%>sale/saleplandetailmv.do?cid=" + row.optNo;
+                    }
+                }
+            }
+        ]
+    });//$("#tblsalechance").bootstrapTable
+
+    ///////////////////////////////////////////////////////////////////////////////////////
+    function submitFrom() {
+        $('#saleplanfrm').bootstrapValidator('validate');
+        var formState = $('#saleplanfrm').data('bootstrapValidator').isValid();
+        if (formState) {
+            url = "<%=basePath%>sale/saleplansaveordelete.do";
+            $.ajax({
+                    cache: false,
+                    type: "post",
+                    url: url,
+                    data: $("#saleplanfrm").serialize(),
+                    async: true,
+                    error: function (request) {
+                        alert("新增销售机会失败！！");
+                    },
+                    success: function (data) {
+                        var result = window.confirm("操作成功，是否继续增加");
+                        if (result == 1) {//确认
+                            initFormData();
+                        } else {
+                            window.location.reload();
+                        }
+                    }
+                }
+            );
+        }
+    }
+
+    //初始化模态窗口中的数据
+    function initModal() {
+
+    }
+
+    //type:显示方式 0：全打开 1：全禁用 
+    function setDialogCompoentState(div, type) {
+        if (type == 0) {
+            $("#" + div).find("form").each(function () {
+                $(this).find("input,select,textarea").each(function () {
+                    $(this).prop("disabled", false);
+                });
+            });
+            $("#" + div).find("button[id='btn_saveorupdate']").prop("disabled", false);
+            //$("#myModalLabel").text($("#myModalLabel").text()+"-新增");
+        } else if (type == 1) {
+            $("#" + div).find("form").each(function () {
+                $(this).find("input,select,textarea,button").each(function () {
+                    $(this).prop("disabled", true);
+                });
+            })
+            $("#" + div).find("button[id='btn_saveorupdate']").prop("disabled", true);
+            //$("#myModalLabel").text($("#myModalLabel").text().replace("-详细","-详细"));
+        }
+
+    }
+
+    //显示模态窗口
+    //type:显示方式 0：新建 1：查看 2:编辑 3:指派
+    //optno：销售机会
+    function showModal(type, optno) {
+
+        $("#saleplandiv").modal();
+    }
+
+    function closeOpt(id) {
+
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////
+    function salePlanState(value, row, index) {
+        //计划状态 0：正在执行 1：执行失败 2：执行失败
+        var ret = "";
+        switch (value) {
+            case 0:
+                ret = "正在执行";
+                break;
+            case 1:
+                ret = "正在执行";
+
+                break;
+            case 2:
+                ret = "执行失败";
+                break;
+        }
+        return ret;
+    }
+
+
+    function stateFormatter(value, row, index) {
+        var ret = "";
+        switch (value) {
+            case "0":
+                ret = "待指派";
+                break;
+            case "1":
+                ret = "以派单";
+                break;
+            case "2":
+                ret = "以关闭";
+                break;
+            case "3":
+                ret = "以完成";
+                break;
+        }
+        return ret;
+    }
+</script>
+</html>

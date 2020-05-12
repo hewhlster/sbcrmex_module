@@ -1,0 +1,85 @@
+﻿<div id="customer_history_orders_dialog" class="modal fade bs-example-modal-lg"
+     tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="false" data-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">历史订单</h4>
+            </div>
+            <div class="modal-body">
+                <!-- bootstarpTable表格工具栏-->
+                <div id="lost_customer_communication_toolbar">
+                    <div class="pull-right" style="margin-bottom: 5px">
+
+                    </div>
+
+                    <!-- 客户基本信息 -->
+                    <div style="clear: both">
+                        <div class="form-group col-sm-6">
+                            <div class="input-group">
+                                <!-- 查询用客户ID -->
+                                <input type="hidden" id="cstno"/>
+
+                                <span class="input-group-addon ">客户名称</span> <input
+                                    class="form-control" type="text" disabled="disabled" id="cstName"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="clear: both">
+                        <div class="pull-left">
+
+                        </div>
+
+
+                        <div class="pull-right">
+                            <!--
+                                <form class="form-inline" role="form">
+                                    <input name="addr" id="addr" placeholder='地点'
+                                        type="text" class="form-control">
+
+                                    <div class="btn-group">
+                                        <button id="btn_search" type="button"
+                                            class="btn btn-warning btn-space">
+                                            <span class="fa fa-search" aria-hidden="true"
+                                                class="btn-icon-space">查询</span>
+
+                                        </button>
+                                        <button id="btn_reset" type="button"
+                                            class="btn btn-info btn-space">
+                                            <span class="fa fa-eraser" aria-hidden="true"
+                                                class="btn-icon-space">重置</span>
+
+                                        </button>
+                                    </div>
+                                </form>
+                                  -->
+                        </div>
+                    </div>
+                </div>
+                <!-- toolbar -->
+
+                <!-- 数据表格 -->
+                <table id='history_orders_tbl'>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default "
+                        data-dismiss="modal" id="btn_close">关闭
+                </button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>
+
+<!-- 订单详情 -->
+<div data-th-include="basic/order/order_items_dialog"></div>
+<script data-th-src="@{js/customer/order/customer_history_orders_dialog.js}" type="text/javascript"
+        charset="utf-8"></script>
+</html>

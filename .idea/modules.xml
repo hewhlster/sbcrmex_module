@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_authorization/sbcrmex_authorization.iml" filepath="$PROJECT_DIR$/sbcrmex_authorization/sbcrmex_authorization.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_commons/sbcrmex_commons.iml" filepath="$PROJECT_DIR$/sbcrmex_commons/sbcrmex_commons.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_customer/sbcrmex_customer.iml" filepath="$PROJECT_DIR$/sbcrmex_customer/sbcrmex_customer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_domain/sbcrmex_domain.iml" filepath="$PROJECT_DIR$/sbcrmex_domain/sbcrmex_domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sbcrmex_module.iml" filepath="$PROJECT_DIR$/.idea/sbcrmex_module.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_report/sbcrmex_report.iml" filepath="$PROJECT_DIR$/sbcrmex_report/sbcrmex_report.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_sale/sbcrmex_sale.iml" filepath="$PROJECT_DIR$/sbcrmex_sale/sbcrmex_sale.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_service/sbcrmex_service.iml" filepath="$PROJECT_DIR$/sbcrmex_service/sbcrmex_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_system/sbcrmex_system.iml" filepath="$PROJECT_DIR$/sbcrmex_system/sbcrmex_system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_user/sbcrmex_user.iml" filepath="$PROJECT_DIR$/sbcrmex_user/sbcrmex_user.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_system/sbcrmex_user (1).iml" filepath="$PROJECT_DIR$/sbcrmex_system/sbcrmex_user (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/sbcrmex_web/sbcrmex_web.iml" filepath="$PROJECT_DIR$/sbcrmex_web/sbcrmex_web.iml" />
+    </modules>
+  </component>
+</project>

@@ -1,0 +1,71 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<base th:href="${#request.getContextPath()}+'/'">
+
+<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        客户管理
+        <small>客户信息</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">客户管理</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <!-- 搜索toolbar -->
+    <div id="toolbar">
+        <div class="pull-left">
+            <div class="btn-group">
+                <button id="btn_customer_new" type="button"
+                        class="btn btn-success btn-space">
+                    <span aria-hidden="true" class="btn-icon-space">新增</span>
+                </button>
+            </div>
+        </div>
+
+
+        <div class="pull-right">
+            <form class="form-inline" role="form">
+                <input name="cstName" id="cstName" placeholder='客户名称' type="text"
+                       class="form-control"> <input name="cstManager"
+                                                    id="cstManager" placeholder='联系人' type="text"
+                                                    class="form-control">
+
+                <div class="btn-group">
+                    <button id="btn_search" type="button"
+                            class="btn btn-warning btn-space">
+                        <span class=" btn-icon-space" aria-hidden="true">查询</span>
+
+                    </button>
+                    <button id="btn_reset" type="button"
+                            class="btn btn-info btn-space">
+                        <span class=" btn-icon-space" aria-hidden="true">重置</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+    <!-- toolbar -->
+    <!-- 数据部分 -->
+    <div>
+        <table id="table"></table>
+    </div>
+</section>
+
+<!-- 新建客户对话框 -->
+<div data-th-include="customer/customer_dialog"></div>
+<!-- 客户详情对话框 -->
+<div data-th-include="customer/customer_detail_dialog"></div>
+<!-- 历史交往记录对话框 -->
+<div data-th-include="customer/customer_history_communication_list_dialog"></div>
+<!-- 历史订单记录对话框 -->
+<div data-th-include="customer/order/customer_history_orders_dialog"></div>
+<div data-th-include="basic/order/order_items_dialog"></div>
+
+
+<script data-th-src="@{js/customer/customer_view.js}"></script>
+

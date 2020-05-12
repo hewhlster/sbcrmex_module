@@ -1,0 +1,69 @@
+#dubbo:
+#  application:
+#    name: sb_crm_consumer
+#    registries:
+#    - session: 10000
+#      timeout: 5000
+#protocol:
+#    name: dubbo
+#    port: 20880
+#  registry:
+#    address: zookeeper://192.168.5.44:2181
+
+logging:
+  config: classpath:logback.xml
+
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: org.fjh.entity
+
+pagehelper:
+  auto-dialect: =true
+  reasonable: true
+
+#web server
+server:
+  port: 80
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      initialSize: 5
+      maxActive: 20
+      minIdle: 5
+    password: jack
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://192.168.5.44:3306/crm_ex?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: root
+  mvc:
+    static-path-pattern: /**
+  #     view:
+  #         prefix: /WEB-INF/page/
+  #         suffix: .jsp
+
+  # resources:
+  #     add-mappings: true
+  #     static-locations: classpath:/static/
+
+  slave:
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      initialSize: 5
+      maxActive: 20
+      minIdle: 5
+    password: jack
+    url: jdbc:mysql://192.168.5.44:3307/crm?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    username: root
+    #热部署生效
+  thymeleaf:
+    mode: HTML
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: utf-8
+    cache: false
+    servlet:
+      content-type: text/html; charset=utf-8
+  session:
+    store-type: redis
+

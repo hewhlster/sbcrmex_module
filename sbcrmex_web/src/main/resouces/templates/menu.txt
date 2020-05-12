@@ -1,0 +1,31 @@
+		<%-- 另一种菜单风格
+		<div class="pageContainer">
+		<!-- 左侧菜单栏 -->
+		<div class="pageSidebar">
+			<div id="accordion2" class="panel-group table-responsive"
+				role="tablist">
+				<c:forEach items="${sessionScope.menu}" var="mainmenu">
+					<div class="panel panel-info" style="background-color: #E8F3FD">
+						<!-- 利用data-target指定要折叠的分组列表 -->
+						<div class="panel-heading" id="collapseListGroupHeading1"
+							data-toggle="collapse" data-parent="#accordion2"
+							data-target="#${mainmenu.key.aid }" role="tab">
+							<h4 class="panel-title">${mainmenu.key.aname }</h4>
+						</div>
+
+						<!-- .panel-collapse和.collapse标明折叠元素 .in表示要显示出来 -->
+						<div id="${mainmenu.key.aid }" class="panel-collapse collapse"
+							role="tabpanel" aria-labelledby="collapseListGroupHeading1">
+							<ul class="list-group">
+								<c:forEach items="${mainmenu.value }" var="submenu">
+									<li class="list-group-item"><a target="mainFrame"
+										class="menu-item-left" href="<%=basePath%>${submenu.aaction}">
+											${submenu.aname } </a></li>
+								</c:forEach>
+							</ul>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+		</div>
+		-- %>

@@ -1,0 +1,175 @@
+﻿<html xmlns:th="http://www.thymeleaf.org">
+<base th:href="${#request.getContextPath()}+'/'">
+
+<head>
+    <meta charset="UTF-8">
+    <title>基础数据-查询</title>
+    <script src="../resource/js/bootstrap-LeadInto.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<form id="basisDataForm">
+    <div class="container">
+        <div class="row clearfix" style="margin-top: 3%;margin-bottom: 1%;">
+            <div class="col-sm-12 column">
+                <div class="col-sm-4 column form-horizontal">
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-5 control-label">产品名称</label>
+                        <div class="col-sm-7">
+                            <input name="proName" type="text" class="form-control" id="inputEmail3"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 column form-horizontal">
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-5 control-label">所在仓库</label>
+                        <div class="col-sm-7">
+                            <input name="proAddress" type="text" class="form-control" id="inputEmail3"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2 column col-sm-offset-1">
+                    <button id="submit" onclick="submitFrom()" type="button"
+                            class="btn btn-default btn-block btn-primary submitForm">查询
+                    </button>
+                </div>
+            </div>
+        </div>
+</form>
+<div class="row clearfix">
+    <div class="col-sm-12 column">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>编号</th>
+                <th>产品名称</th>
+                <th>型号</th>
+                <th>单价</th>
+                <th>单位</th>
+                <th>库存数</th>
+                <th>所在仓库</th>
+                <th>备注</th>
+            </tr>
+            </thead>
+            <tbody id="tableBody">
+
+            </tbody>
+        </table>
+        <div class="row clearfix">
+            <div class="col-md-5 column">
+                <ul class="pagination">
+                    <li>
+                        <a rel="nofollow" href="#">上一页</a>
+                    </li>
+                    <li>
+                        <a rel="nofollow" href="#">1</a>
+                    </li>
+                    <li>
+                        <a rel="nofollow" href="#">2</a>
+                    </li>
+                    <li>
+                        <a rel="nofollow" href="#">3</a>
+                    </li>
+                    <li>
+                        <a rel="nofollow" href="#">4</a>
+                    </li>
+                    <li>
+                        <a rel="nofollow" href="#">5</a>
+                    </li>
+                    <li>
+                        <a rel="nofollow" href="#">下一页</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="../resource/js/pageList.js" type="text/javascript" charset="utf-8"></script>
+<script src="../resource/js/checkSelect.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" charset="utf-8">
+    window.onload = function () {
+        getInfo();
+    }
+
+    function viewTable(data, pageListButton) {
+        var obj = JSON.parse(data);
+        $("#tableBody").html(""); //清空table
+        for (var i = 0; i < obj.length; i++) {
+            var strClass = "class=";
+            var nameClass;
+            switch (i % 5) {
+                case 0:
+                    nameClass = "";
+                    break;
+                case 1:
+                    nameClass = "active";
+                    break;
+                case 2:
+                    nameClass = "success";
+                    break;
+                case 3:
+                    nameClass = "warning";
+                    break;
+                case 4:
+                    nameClass = "danger";
+                    break;
+            }
+            strClass += "\"" + nameClass + "\"";
+            $("#tableBody").append(
+                "<tr " + strClass + "><td>" + obj[i].StrgPrdNo + "</td><td>" + obj[i].Prd_Information.PrdName + "</td><td>" + obj[i].Prd_Information.PrdModel + "</td><td>" + obj[i].Prd_Information.PrdPrice + "</td><td>" + obj[i].Prd_Information.PrdUnit + "</td><td>" + obj[i].StrgCount + "</td><td>" + obj[i].StrgStorehouse + "</td><td>" + obj[i].StrgRemark + "</td></tr>");
+        }
+        if (pageListButton) {
+            pageListButton();
+        }
+    }
+
+    function submitFrom() {
+
+        $('form').bootstrapValidator('validate');
+        var formState = $('form').data('bootstrapValidator').isValid()
+        if (formState) {
+            $.ajax({
+                cache: true,
+                type: "POST",
+                url: "../../Control/basisDataControl/selectBasisData.ashx",
+                data: $("#basisDataForm").serialize(),
+                async: false,
+                error: function (request) {
+                    alert("服务器暂时无法响应，请稍后...");
+                },
+                success: function (data) {
+                    json = data;
+                    pageList(json, ListCount, "1");
+                    // viewTable(data);
+                }
+            });
+        }
+    }
+
+
+    function getInfo() {
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "../../Control/basisDataControl/basisDataHandler.ashx",
+            async: false,
+            error: function (request) {
+                alert("服务器暂时无法响应，请稍后...");
+            },
+            success: function (data) {
+
+                //更新json
+                json = data;
+                //调用分页函数
+                pageList(json, ListCount, "1")
+                //viewTable(data);
+            }
+        });
+
+    }
+
+</script>
+
+</body>
+</html>

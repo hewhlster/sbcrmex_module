@@ -1,0 +1,125 @@
+<!-- 增加服务对话框 -->
+<div class="modal fade" id="servicedialog" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true"
+     data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"
+                        aria-hidden="true">&times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">增加服务</h4>
+            </div>
+            <div class="modal-body">
+                <!-- Modal -->
+                <form id="serviceAddForm" class="form-horizontal center-block"
+                      role="form">
+                    <div class="form-group">
+                        <label for="svcNo" class="col-sm-2 control-label">服务编号</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" readonly=readonly
+                                   id="svcNo" name="svcNo" style="color: red"/>
+                        </div>
+                        <div class="inscop">
+                            <label for="svcType" class="col-sm-2 control-label">服务类型</label>
+                            <div class="col-sm-4">
+                                <select name="svcType" class="form-control">
+                                    <option value="0">咨询</option>
+                                    <option value="1">建议</option>
+                                    <option value="2">投诉</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="inscop">
+                            <label for="svcSummary" class="col-sm-2 control-label">服务摘要</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" name="svcSummary"
+                                       id="svcSummary"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="inscop">
+                            <label for="cstNo" class="col-sm-2 control-label">客户</label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control "
+                                           name="cstNoValue" id="cstNoValue"
+                                           disabled="disabled"/>
+                                    <span class="input-group-addon glyphicon glyphicon-search" id="btn_customer"></span>
+                                </div>
+                                <input type="hidden" class="form-control " name="cstNo"
+                                       id="cstNo"/>
+                            </div>
+                        </div>
+
+
+                        <div class="inscop">
+                            <label for="svcStatus" class="col-sm-2 control-label">状态</label>
+                            <div class="col-sm-4">
+                                <select class="form-control" name="svcStatus">
+                                    <option value="0" selected="selected">待分配</option>
+                                    <!--
+                                    <option value="1">待处理</option>
+                                    <option value="2">以处理</option>
+                                    <option value="3">待反馈</option>
+                                    <option value="4">以归档</option>
+                                      -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="inscop">
+                            <label for="svcDetails" class="col-sm-2 control-label">服务请求</label>
+                            <div class="col-sm-10">
+								<textarea name="svcDetails" id="svcDetails" class="form-control"
+                                          rows="3" style="resize: none;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="inscop">
+                            <label for="svcCreateNo" class="col-sm-2 control-label">服务创建人</label>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <input type="text" class="form-control "
+                                           name="svcCreateNoValue" id="svcCreateNoValue"
+                                           disabled="disabled"/>
+                                    <span class="input-group-addon glyphicon glyphicon-search" id="btn_createno"></span>
+                                </div>
+                                <input type="hidden" class="form-control " name="svcCreateNo"
+                                       id="svcCreateNo"/>
+                            </div>
+                        </div>
+                        <div class="inscop">
+                            <label for="svcCreateDate" class="col-sm-2 control-label">创建时间</label>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control layui-input"
+                                       name="svcCreateDate" id="svcCreateDate"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- modal-body -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-default"
+                        data-dismiss="modal">关闭
+                </button>
+                <button type="button" class="btn btn-sm btn-warning " id="btnsubmit">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div data-th-include="customer/customer_list_dialog"></div>
+<div data-th-include="user/user_list_dialog"></div>
+
+
+<script type="text/javascript" data-th-src="@{js/service/add-dialog.js}"></script>
+

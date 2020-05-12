@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<base th:href="${#request.getContextPath()}+'/'">
+
+<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        日志信息
+        <small>日志列表</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">日志信息</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+    <div id="toolbar">
+
+        <div class="pull-right">
+            <form class="form-inline" role="form" id="frmsearch">
+                <input name="user" id="user" placeholder='操作者'
+                       type="text" class="form-control">
+
+                <div class="btn-group">
+                    <button id="btn_search" onclick="customSearch()" type="button"
+                            class="btn btn-warning btn-space">
+							<span class=" btn-icon-space" aria-hidden="true"
+                            >查询</span>
+
+                    </button>
+                    <button id="btn_reset" onclick="resetSearch()" type="button"
+                            class="btn btn-info btn-space">
+							<span class=" btn-icon-space" aria-hidden="true"
+                            >重置</span>
+
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- toolbar -->
+    <!-- 数据表格 -->
+    <table id="table"></table>
+    </div>
+</section>
+<script data-th-src="@{js/log/log_view.js}"></script>
+</html>

@@ -1,0 +1,81 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<base th:href="${#request.getContextPath()}+'/'">
+
+<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        XXXXX管理
+        <small>小标题</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">XXXXX管理</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+
+    <!-- bootstarpTable表格工具栏,结合jackown.js使用 -->
+    <div id="toolbar">
+        <div class="pull-right" style="margin-bottom: 5px">
+            <div class="">
+                <div class="btn-group">
+                    <button id="btn_reload" type="button"
+                            class="btn btn-default btn-space">
+							<span class="fa fa-plus-square" aria-hidden="true"
+                                  class="btn-icon-space">刷新</span>
+                    </button>
+                    <button id="btn_back" type="button"
+                            class="btn btn-primary btn-space">
+							<span class="fa fa-plus-square" aria-hidden="true"
+                                  class="btn-icon-space">返回</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both">
+            <div class="pull-left">
+                <div class="btn-group">
+                    <button id="btn_new" onclick="showModal(0)" type="button"
+                            class="btn btn-success btn-space">
+						<span class="fa fa-plus-square" aria-hidden="true"
+                              class="btn-icon-space">新增</span>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="pull-right">
+                <form class="form-inline" role="form">
+                    <input name="optCstName" id="opt_CstName" placeholder='客户名称'
+                           type="text" class="form-control">
+                    <input name="optLkmName"
+                           id="opt_LkmName" placeholder='联系人' type="text"
+                           class="form-control">
+
+                    <div class="btn-group">
+                        <button id="btn_search" type="button"
+                                class="btn btn-warning btn-space">
+							<span class="fa fa-search" aria-hidden="true"
+                                  class="btn-icon-space">查询</span>
+
+                        </button>
+                        <button id="btn_reset" type="button"
+                                class="btn btn-info btn-space">
+							<span class="fa fa-eraser" aria-hidden="true"
+                                  class="btn-icon-space">重置</span>
+
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>        <!-- toolbar -->
+
+
+    <!-- 数据表格 -->
+    <table id="table"></table>
+    </div>
+</section>
+</html>

@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<base th:href="${#request.getContextPath()}+'/'">
+
+<!-- Content Wrapper. Contains page content -->
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1>
+        统计报表
+        <small>服务分析</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li class="active">统计报表</li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content">
+
+    <div>
+        <!-- 绘图区域 -->
+        <!-- 服务类型比率构成（百分比堆叠面积图）-->
+        <div id="service_compose_container" style="margin:5px;float:left;height:400px;width: 400px">
+
+        </div>
+        <!-- 服务满意度（折线图）-->
+        <div id="service_satisfaction_container" style="margin:5px;float:left;height:400px;width: 400px">
+
+        </div>
+        <!-- 服务完成度（堆叠柱状图）-->
+        <div id="service_completion_degree_container" style="margin:5px;float:left;height:400px;width: 400px">
+
+        </div>
+
+
+    </div>
+    <!-- 数据表格 -->
+    </div>
+
+
+</section>
+<script data-th-src="@{js/report/report_customer_service_view.js}" type="text/javascript" charset="utf-8"></script>
+</html>

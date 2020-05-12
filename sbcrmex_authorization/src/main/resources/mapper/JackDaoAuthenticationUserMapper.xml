@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fjh.dao.JackDaoAuthenticationUserMapper">
+
+
+    <select id="findUserByEmailOrMoblie" resultType="org.fjh.entity.User">
+        select *from tbl_user where email=#{email} or moblie=#{moblie}
+    </select>
+
+    <select id="findRolesByUid" resultType="org.fjh.entity.Role">
+      SELECT
+          `tbl_role`.`id`,
+          `tbl_role`.`createdate`,
+          `tbl_role`.`updatedate`,
+          `tbl_role`.`name`,
+          `tbl_role`.`tag`,
+          `tbl_role`.`memo`
+        FROM
+          `tbl_user_role`
+          INNER JOIN `crm_ex`.`tbl_role`
+            ON (
+              `tbl_user_role`.`rid` = `tbl_role`.`id`
+            )
+          INNER JOIN `crm_ex`.`tbl_user`
+            ON (
+              `tbl_user_role`.`uid` = `tbl_user`.`id`
+            )
+        WHERE (`tbl_user_role`.`uid` =#{uid});
+
+    </select>
+
+    <select id="findRolesAll" resultType="org.fjh.entity.Role">
+      SELECT
+          `tbl_role`.`id`,
+          `tbl_role`.`createdate`,
+          `tbl_role`.`updatedate`,
+          `tbl_role`.`name`,
+          `tbl_role`.`tag`,
+          `tbl_role`.`memo`
+        FROM
+          `tbl_role`
+    </select>
+
+
+
+    <select id="findResourcesByRid" resultType="org.fjh.entity.Resource">
+        SELECT
+            `tbl_resource`.`id`
+            , `tbl_resource`.`createdate`
+            , `tbl_resource`.`updatedate`
+            , `tbl_resource`.`name`
+            , `tbl_resource`.`url`
+            , `tbl_resource`.`pid`
+            , `tbl_resource`.`gnum`
+            , `tbl_resource`.`valid`
+            , `tbl_resource`.`type`
+            , `tbl_resource`.`level`
+            , `tbl_resource`.`icon`
+            , `tbl_resource`.`memo`
+        FROM
+            `tbl_role_resource`
+            INNER JOIN `crm_ex`.`tbl_role`
+                ON (`tbl_role_resource`.`rid` = `tbl_role`.`id`)
+            INNER JOIN `crm_ex`.`tbl_resource`
+                ON (`tbl_role_resource`.`aid` = `tbl_resource`.`id`)
+                WHERE (`tbl_role`.`id` =#{rid});
+    </select>
+</mapper>
