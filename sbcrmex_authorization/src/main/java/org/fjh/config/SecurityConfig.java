@@ -44,7 +44,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         http.formLogin()
                     .loginPage("/user/login_view") //登陆认证页
                     .loginProcessingUrl("/auth/login")//认证
-                    .defaultSuccessUrl("/user/user_main_view")//认证成功跳转URL
+                    .defaultSuccessUrl("/user/system_main_view")//认证成功跳转URL
                     .failureForwardUrl("/login_view?error")//  定义当需要用户登录时候，转到的登录页面。
                     .usernameParameter("usersCode")
                     .passwordParameter("usersPassword")

@@ -13,9 +13,8 @@
         <result column="addr" jdbcType="VARCHAR" property="addr"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
         <result column="state" jdbcType="VARCHAR" property="state"/>
-        <result column="rid" jdbcType="VARCHAR" property="rid"/>
         <!--角色信息-->
-        <association property="role" column="rid"  select="org.fjh.dao.RoleMapper.selectByPrimaryKey" fetchType="lazy"></association>
+        <association property="roles" column="id"  select="org.fjh.dao.RoleMapper.selectUserRolesByUid" fetchType="lazy"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -78,8 +77,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, createdate, updatedate, code, name, password, gender, tel, addr, remark, state, 
-    rid
+    id, createdate, updatedate, code, name, password, gender, tel, addr, remark, state
+
   </sql>
     <select id="selectByExample" parameterType="org.fjh.entity.UserExample" resultMap="BaseResultMap">
         select
@@ -116,11 +115,11 @@
     insert into tbl_user (id, createdate, updatedate, 
       code, name, password, 
       gender, tel, addr, 
-      remark, state, rid)
+      remark, state)
     values (#{id,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{updatedate,jdbcType=TIMESTAMP}, 
       #{code,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{gender,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{rid,jdbcType=VARCHAR})
+      #{remark,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="org.fjh.entity.User">
         insert into tbl_user
@@ -158,9 +157,6 @@
             <if test="state != null">
                 state,
             </if>
-            <if test="rid != null">
-                rid,
-            </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
@@ -196,9 +192,7 @@
             <if test="state != null">
                 #{state,jdbcType=VARCHAR},
             </if>
-            <if test="rid != null">
-                #{rid,jdbcType=VARCHAR},
-            </if>
+
         </trim>
     </insert>
     <select id="countByExample" parameterType="org.fjh.entity.UserExample" resultType="java.lang.Long">
@@ -243,9 +237,7 @@
             <if test="record.state != null">
                 state = #{record.state,jdbcType=VARCHAR},
             </if>
-            <if test="record.rid != null">
-                rid = #{record.rid,jdbcType=VARCHAR},
-            </if>
+
         </set>
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
@@ -263,8 +255,7 @@
         tel = #{record.tel,jdbcType=VARCHAR},
         addr = #{record.addr,jdbcType=VARCHAR},
         remark = #{record.remark,jdbcType=VARCHAR},
-        state = #{record.state,jdbcType=VARCHAR},
-        rid = #{record.rid,jdbcType=VARCHAR}
+        state = #{record.state,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
         </if>
@@ -302,9 +293,7 @@
             <if test="state != null">
                 state = #{state,jdbcType=VARCHAR},
             </if>
-            <if test="rid != null">
-                rid = #{rid,jdbcType=VARCHAR},
-            </if>
+
         </set>
         where id = #{id,jdbcType=VARCHAR}
     </update>
@@ -319,21 +308,21 @@
       tel = #{tel,jdbcType=VARCHAR},
       addr = #{addr,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      state = #{state,jdbcType=VARCHAR},
-      rid = #{rid,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=VARCHAR}
+      state = #{state,jdbcType=VARCHAR}
+          where id = #{id,jdbcType=VARCHAR}
   </update>
 
-    <resultMap id="BaseUserRoleResultMap" type="org.fjh.entity.User" extends="BaseResultMap">
+<!--    <resultMap id="BaseUserRoleResultMap" type="org.fjh.entity.User" extends="BaseResultMap">
         <association property="role" column="rid" select="org.fjh.dao.RoleMapper.selectByPrimaryKey" fetchType="lazy">
 
         </association>
-    </resultMap>
+    </resultMap>-->
 
-    <!-- 自定statement-->
+    <!-- 自定statement
     <select id="selectUserRoleByPk" resultMap="BaseUserRoleResultMap">
         select *from tbl_user where id=#{id}
   </select>
+  -->
 
     <select id="selectUsersByRid" resultMap="BaseResultMap">
       select *from tbl_user where rid=#{rid}
@@ -352,5 +341,7 @@
         </where>
         order by createdate
     </select>
+
+
 
 </mapper>

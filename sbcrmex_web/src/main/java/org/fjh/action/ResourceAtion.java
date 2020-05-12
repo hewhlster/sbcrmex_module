@@ -55,7 +55,7 @@ public class ResourceAtion extends BaseAction {
      * 作者：樊建华
      * 日期：2019年1月16日-上午10:19:21
      */
-    @GetMapping("/add")
+    @RequestMapping("/add")
     @ResponseBody
     public Map resourceAdd(Resource resource) {
         logger.info(resource.toString());
@@ -74,7 +74,7 @@ public class ResourceAtion extends BaseAction {
      * 作者：樊建华
      * 日期：2019年1月16日-下午1:34:05
      */
-    @GetMapping("/update")
+    @RequestMapping("/update")
     @ResponseBody
     public Map resourceUpdate(Resource resource) {
         logger.info(resource.toString());
@@ -93,7 +93,7 @@ public class ResourceAtion extends BaseAction {
      * 作者：樊建华
      * 日期：2019年1月16日-下午2:12:42
      */
-    @GetMapping("/delete")
+    @RequestMapping("/delete")
     @ResponseBody
     public Map resourceDelete(@RequestParam("id") String id) {
         Integer ret = resourceService.deleteById(id);
@@ -106,12 +106,12 @@ public class ResourceAtion extends BaseAction {
         return map;
     }
 
-    @GetMapping("/resource_view")
+    @RequestMapping("/resource_view")
     public String resouceView() {
         return "resource/resource_view";
     }
 
-    @GetMapping("/resource_get_all")
+    @RequestMapping("/resource_get_all")
     @ResponseBody
     public List<TreeNode> resourceGetTreeNode() {
         return resourceService.getAllResourceConvertToTree().getChildList();

@@ -12,4 +12,6 @@ public interface UserMapper extends BaseMapper<User, UserExample> {
     public User selectUserRoleByPk(String id);
 
     public List<User> selectUsersByRid(String rid);
+
+    public User selectUserRoleById(String uid);
 }

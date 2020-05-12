@@ -1,9 +1,12 @@
 package org.fjh.service.impl;
 
 import org.fjh.dao.ResourceMapper;
+import org.fjh.dao.RoleMapper;
 import org.fjh.entity.Resource;
 import org.fjh.entity.ResourceExample;
+import org.fjh.entity.Role;
 import org.fjh.service.IResourceService;
+import org.fjh.service.IRoleService;
 import org.fjh.util.Menu;
 import org.fjh.util.TreeHelper;
 import org.fjh.util.TreeNode;
@@ -24,6 +27,9 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements IR
     private Logger logger = LoggerFactory.getLogger(ResourceServiceImpl.class);
 
     private ResourceMapper resourceMapper;
+
+    @Autowired
+    private RoleMapper roleMapper;
 
     @Autowired
     public void setResourceMapper(ResourceMapper resourceMapper) {
@@ -338,6 +344,34 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements IR
         List<TreeNode> treeNodeList = new ArrayList<>();
 
         for (Resource temp : list) {
+            TreeNode tn = new Menu(temp.getId(), temp.getName(), temp.getUrl(), temp.getIcon());
+            tn.setId(temp.getId());
+            tn.setParentid(temp.getPid());
+            tn.setName(temp.getName());
+            treeNodeList.add(tn);
+        }
+
+        TreeHelper thelper = new TreeHelper(treeNodeList);
+
+        return thelper.getRoot().getChildList();
+    }
+
+    @Override
+    public List<TreeNode> getMenuByUidEx(String id) {
+        //取得用户的所有角色
+        List<Role> roles=roleMapper.selectUserRolesByUid(id);
+        String ids[] = new String[roles.size()];
+        for(int index=0;index<ids.length;index++){
+            ids[index] = roles.get(index).getId();
+        }
+        //根据角色取得其对应的资源
+        List<Resource> list = resourceMapper.selectResourcesByRids(ids);
+
+        List<TreeNode> treeNodeList = new ArrayList<>();
+
+        for (Resource temp : list) {
+            if(temp==null)
+                continue;
             TreeNode tn = new Menu(temp.getId(), temp.getName(), temp.getUrl(), temp.getIcon());
             tn.setId(temp.getId());
             tn.setParentid(temp.getPid());

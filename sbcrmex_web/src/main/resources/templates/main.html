@@ -96,8 +96,9 @@
                                 <p>
                                 <div id="name" th:text="${session.logineduser.name}">
                                 </div>
-                                <div id="rname" th:text="${session.logineduser.role.name }">
-                                </div>
+                                <div id="rname" th:text="${session.logineduser.roles[0].name }"></div>
+
+
                                 <small></small>
                                 </p>
                             </li>
@@ -131,7 +132,7 @@
                     <p>
                     <div id="name1" th:text="${session.logineduser.name}">
                     </div>
-                    <div id="rname1" th:text="${session.logineduser.role.name }">
+                    <div id="rname1" th:text="${session.logineduser.roles[0].name }">
                     </div>
                     </p>
                     <!--

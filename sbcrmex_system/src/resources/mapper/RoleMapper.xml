@@ -247,4 +247,20 @@
         </foreach>
     </insert>
 
+    <select id="selectUserRolesByUid" resultMap="BaseResultMap">
+        SELECT
+            `tbl_role`.`id`,
+            `tbl_role`.`createdate`,
+            `tbl_role`.`updatedate`,
+            `tbl_role`.`name`,
+            `tbl_role`.`tag`,
+            `tbl_role`.`memo`
+        FROM
+        `tbl_user_role`
+        INNER JOIN `tbl_role`
+            ON (
+            `tbl_user_role`.`rid` = `tbl_role`.`id`
+            )
+        WHERE `tbl_user_role`.`uid` = #{id}
+    </select>
 </mapper>

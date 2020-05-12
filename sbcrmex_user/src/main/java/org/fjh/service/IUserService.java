@@ -39,7 +39,10 @@ public interface IUserService extends IBaseService<User> {
 
     public int modifyPassword(String usercode, String oldpass, String newpass);
 
+    /**
+     * 查找用户的同时取得其角色
+     */
 
-
+    public User findUserRolesById(String uid);
 }
 

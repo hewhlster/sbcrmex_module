@@ -122,6 +122,14 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
         return userMapper.updateByExampleSelective(user,example);
     }
 
+    @Override
+    public User findUserRolesById(String uid) {
+
+
+
+        return null;
+    }
+
 
     @Cacheable(value = "findByRoleCode", key = "#roleid")
     public List<User> findByRoleCode(String roleid) {

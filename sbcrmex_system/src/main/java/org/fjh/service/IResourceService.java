@@ -16,6 +16,10 @@ public interface IResourceService extends IBaseService<Resource> {
     public Map<Resource, List<Resource>> getMenuByRid(String rid);
 
     public List<TreeNode> getMenuByRidEx(String rid);
+
+    //根据用户ID取得其菜单
+    public List<TreeNode> getMenuByUidEx(String id);
+
     //public ArrayList<Map<Object, Object> > getTreeListByRid(String id);
     //public ArrayList<TreeNode> getNodes() ;
     //public ArrayList<Map<Object, Object> >getTreeList();

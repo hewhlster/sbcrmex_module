@@ -47,7 +47,7 @@ public class UserAction extends BaseAction {
 
     @RequestMapping("/login_view")
     public String loginView() {
-        return "/login.html";
+        return "login";
     }
 
     /**
@@ -57,6 +57,13 @@ public class UserAction extends BaseAction {
     public String userCenterView(HttpSession session) {
         return "/user_center_view";
     }
+
+    /**
+     *
+     * @param usersCode
+     * @param usersPassword
+     * @param session
+     * @return
 
     @GetMapping("/login")
     public String login(String usersCode,
@@ -87,11 +94,12 @@ public class UserAction extends BaseAction {
         return url;
     }
 
+     */
     /**
      * 用途：AJAX登陆
      * 作者：樊建华
      * 日期：2019年1月24日-上午9:50:26
-     */
+
     @GetMapping("/ajax_login")
     public @ResponseBody
     Map ajaxLogin(@ApiParam("用户编号") String usersCode,
@@ -125,7 +133,7 @@ public class UserAction extends BaseAction {
         logger.info(">>>>>>>>>>>>>>---------ajaxlogin msg---------<<<<<<<<<<<<<<\t" + loginUser);
         return json;
     }
-
+     */
 
     /**
      * 用途： 作者：樊建华 日期：2019年1月20日-下午2:07:37
@@ -192,7 +200,7 @@ public class UserAction extends BaseAction {
     }
 
     // 测试
-    @RequestMapping("/user_main_view")
+    @RequestMapping("/system_main_view")
     public String mainPage(HttpSession session) {
         JackUserDetails jackUserDetails = (JackUserDetails) getContext().getAuthentication() .getPrincipal();
 
@@ -235,15 +243,31 @@ public class UserAction extends BaseAction {
         return userService.findByRoleCode("3344");
     }
 
-    @GetMapping("/user_menu")
+    /**
+     *
+     * @param session
+     * @return
+
+    //@GetMapping("/user_menu")
     public @ResponseBody
-    List<TreeNode> getMenuByRid(HttpSession session) {
+    List<TreeNode> getMenuByRid_not_used(HttpSession session) {
         JackUserDetails jackUserDetails = (JackUserDetails) getContext().getAuthentication() .getPrincipal();
         String id = jackUserDetails.getId();
 
         User loginedUser=userService.getUserById(id);
         String rid = loginedUser.getRid();
         List<TreeNode> ret = resourceService.getMenuByRidEx(rid);
+        return ret;
+    }
+     */
+
+    @GetMapping("/user_menu")
+    public @ResponseBody
+    List<TreeNode> getMenuByRid(HttpSession session) {
+        JackUserDetails jackUserDetails = (JackUserDetails) getContext().getAuthentication() .getPrincipal();
+        String id = jackUserDetails.getId();
+
+        List<TreeNode> ret = resourceService.getMenuByUidEx(id);
         return ret;
     }
 

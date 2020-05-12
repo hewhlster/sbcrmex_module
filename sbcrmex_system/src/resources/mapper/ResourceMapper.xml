@@ -333,38 +333,38 @@
 		where apid=#{apid} order by anum
 	</select>
 
-    <!-- 得到角色对应的资源 -->
+    <!-- 得到角色对应的资源
+         用户可同时拥有多个角色，调整SQL(2020/5/12)
+
+     -->
     <select id="selectResourceByRid" resultMap="BaseResultMap">
 		SELECT
-          `tbl_resource`.`id`,
-          `tbl_resource`.`createdate`,
-          `tbl_resource`.`updatedate`,
-          `tbl_resource`.`name`,
-          `tbl_resource`.`url`,
-          `tbl_resource`.`pid`,
-          `tbl_resource`.`gnum`,
-          `tbl_resource`.`valid`,
-          `tbl_resource`.`type`,
-          `tbl_resource`.`level`,
-          `tbl_resource`.`icon`,
-          `tbl_resource`.`memo`,
-          `tbl_resource`.`pid` AS parentid
+            DISJOINT
+            `tbl_resource`.`id`
+            , `tbl_resource`.`createdate`
+            , `tbl_resource`.`updatedate`
+            , `tbl_resource`.`name`
+            , `tbl_resource`.`url`
+            , `tbl_resource`.`pid`
+            , `tbl_resource`.`gnum`
+            , `tbl_resource`.`valid`
+            , `tbl_resource`.`type`
+            , `tbl_resource`.`level`
+            , `tbl_resource`.`icon`
+            , `tbl_resource`.`memo`
         FROM
-          `tbl_role_resource`
-          INNER JOIN `tbl_role`
-            ON (
-              `tbl_role_resource`.`rid` = `tbl_role`.`id`
-            )
-          INNER JOIN `tbl_resource`
-            ON (
-              `tbl_role_resource`.`aid` = `tbl_resource`.`id`
-            )
-        WHERE (`tbl_resource`.`type` = 1)
-          AND (
-            `tbl_role`.`id` = #{rid}
-          )
+            `tbl_role_resource`
+            INNER JOIN .`tbl_role`
+                ON (`tbl_role_resource`.`rid` = `tbl_role`.`id`)
+            INNER JOIN `crm_ex`.`tbl_resource`
+                ON (`tbl_role_resource`.`aid` = `tbl_resource`.`id`)
+        WHERE (`tbl_role`.`id` =#{rid})
         ORDER BY `tbl_resource`.`gnum`
 	</select>
+
+
+
+
 
 
     <select id="selectAllResource" resultMap="BaseResultMap">
@@ -431,4 +431,33 @@
 		AND (`tbl_role_resource`.`rid` =#{rid}) ORDER BY `tbl_resource`.`gnum`;
 	</select>
 
+
+
+    <select id="selectResourcesByRids" resultMap="BaseResultMap">
+      SELECT
+            distinct
+		     `tbl_resource`.`id`
+		    , `tbl_resource`.`name`
+		    , `tbl_resource`.`url`
+		    , `tbl_resource`.`pid`
+		    , `tbl_resource`.`gnum`
+		    , `tbl_resource`.`valid`
+		    , `tbl_resource`.`type`
+		    , `tbl_resource`.`level`
+		    , `tbl_resource`.`icon`
+		    , `tbl_resource`.`createdate`
+		    , `tbl_resource`.`updatedate`
+
+		FROM
+		    `tbl_role_resource`
+		    left  JOIN `tbl_resource`
+		        ON (`tbl_role_resource`.`aid` = `tbl_resource`.`id`)
+		AND (`tbl_role_resource`.`rid`
+		  in
+		  <foreach collection="ids" item="id" open="(" close=")" separator=",">
+              #{id}
+          </foreach>
+		)
+		ORDER BY `tbl_resource`.`gnum`;
+    </select>
 </mapper>

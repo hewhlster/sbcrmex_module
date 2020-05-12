@@ -2,7 +2,7 @@
 SQLyog Ultimate v12.09 (64 bit)
 MySQL - 5.7.17-log : Database - crm_ex
 *********************************************************************
-*/
+*/
 
 /*!40101 SET NAMES utf8 */;
 
@@ -389,14 +389,12 @@ CREATE TABLE `tbl_user` (
   `addr` varchar(100) DEFAULT NULL,
   `remark` varchar(500) DEFAULT NULL,
   `state` varchar(10) DEFAULT NULL COMMENT '0:正常 1：禁用',
-  `rid` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_rid` (`rid`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `tbl_user` */
 
-insert  into `tbl_user`(`id`,`createdate`,`updatedate`,`code`,`email`,`moblie`,`name`,`password`,`gender`,`tel`,`addr`,`remark`,`state`,`rid`) values ('0c9f7ee9243111e990d23c970e4745df',NULL,NULL,'1234','hewlh@163.com','18961297987','rose','e10adc3949ba59abbe56e057f20f883e','1','110','江苏南通','好人','0','1868e69b260411e990d23c970e4745df'),('113f7229249c11e990d23c970e4745df',NULL,NULL,'1122',NULL,NULL,'jacks','a3ee8eafa6c67af865dfb153c86a6920','0','18961297987','','','0','1868e69b260411e990d23c970e4745df'),('3ca0c5310d2211e9beb53c970e4745df',NULL,NULL,'7895',NULL,NULL,'MIKE','cb3c95b7667de147854dcdcfa090c0e1','0','13584329668','FDSAFDSA','','0','46d03442211411e9bfa23c970e4745df'),('4d1021b722aa11e9bfa23c970e4745df',NULL,NULL,'7894',NULL,NULL,'Jack','cb3c95b7667de147854dcdcfa090c0e1','0','123456','','','0','3e15c4df211411e9bfa23c970e4745df'),('9d414de2fdb111e792a33c970e4745df',NULL,NULL,'9900',NULL,NULL,'李四','cb3c95b7667de147854dcdcfa090c0e1','0','323232','3232332','','0','2ed1be91211411e9bfa23c970e4745df'),('ad0f52d8211411e9bfa23c970e4745df',NULL,NULL,'7788',NULL,NULL,'樊建华','a3ee8eafa6c67af865dfb153c86a6920','0','18961297987','江苏常州','','0','1e9ed0db211411e9bfa23c970e4745df');
+insert  into `tbl_user`(`id`,`createdate`,`updatedate`,`code`,`email`,`moblie`,`name`,`password`,`gender`,`tel`,`addr`,`remark`,`state`) values ('0c9f7ee9243111e990d23c970e4745df',NULL,NULL,'1234','hewlh@163.com','18961297987','rose','e10adc3949ba59abbe56e057f20f883e','1','110','江苏南通','好人','0'),('113f7229249c11e990d23c970e4745df',NULL,NULL,'1122','hewhl@163.com','18961297987','jacks','e10adc3949ba59abbe56e057f20f883e','0','18961297987','','','0'),('3ca0c5310d2211e9beb53c970e4745df',NULL,NULL,'7895',NULL,NULL,'MIKE','cb3c95b7667de147854dcdcfa090c0e1','0','13584329668','FDSAFDSA','','0'),('4d1021b722aa11e9bfa23c970e4745df',NULL,NULL,'7894',NULL,NULL,'Jack','cb3c95b7667de147854dcdcfa090c0e1','0','123456','','','0'),('9d414de2fdb111e792a33c970e4745df',NULL,NULL,'9900',NULL,NULL,'李四','cb3c95b7667de147854dcdcfa090c0e1','0','323232','3232332','','0'),('ad0f52d8211411e9bfa23c970e4745df',NULL,NULL,'7788',NULL,NULL,'樊建华','a3ee8eafa6c67af865dfb153c86a6920','0','18961297987','江苏常州','','0');
 
 /*Table structure for table `tbl_user_role` */
 
@@ -413,7 +411,7 @@ CREATE TABLE `tbl_user_role` (
 
 /*Data for the table `tbl_user_role` */
 
-insert  into `tbl_user_role`(`rid`,`uid`) values ('1868e69b260411e990d23c970e4745df','0c9f7ee9243111e990d23c970e4745df');
+insert  into `tbl_user_role`(`rid`,`uid`) values ('1868e69b260411e990d23c970e4745df','0c9f7ee9243111e990d23c970e4745df'),('1e9ed0db211411e9bfa23c970e4745df','113f7229249c11e990d23c970e4745df'),('46d03442211411e9bfa23c970e4745df','113f7229249c11e990d23c970e4745df');
 
 /* Procedure structure for procedure `serviceComposeProc` */
 

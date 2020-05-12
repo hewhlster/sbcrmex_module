@@ -38,13 +38,13 @@ public class RoleAction extends BaseAction {
      * 作者：樊建华
      * 日期：2019年1月17日-上午10:44:25
      */
-    @GetMapping("/role_list")
+    @RequestMapping("/role_list")
     public @ResponseBody
     List<Role> getAllRole() {
         return roleService.getAll();
     }
 
-    @PostMapping("/role_pager")
+    @RequestMapping("/role_pager")
     public @ResponseBody
     Map pager(@RequestBody Object param) {
         PageEntity<Role> pageEx = super.bindPagerParams(param);
@@ -63,7 +63,7 @@ public class RoleAction extends BaseAction {
      * 作者：樊建华
      * 日期：2017年12月20日-上午10:33:48
      */
-    @GetMapping("/list")
+    @RequestMapping("/list")
     public @ResponseBody
     List<Role> list() {
         return roleService.getAll();
@@ -74,7 +74,7 @@ public class RoleAction extends BaseAction {
      * 作者：樊建华
      * 日期：2019年1月15日-上午10:41:16
      */
-    @GetMapping("/role_view")
+    @RequestMapping("/role_view")
     public String roleView() {
         return "role/role_view";
     }
@@ -84,7 +84,7 @@ public class RoleAction extends BaseAction {
      * 作者：樊建华
      * 日期：2019年1月15日-上午11:39:41
      */
-    @GetMapping("/role_add")
+    @RequestMapping("/role_add")
     public @ResponseBody
     Map roleAdd(Role role) {
         logger.info(role.toString());
@@ -103,7 +103,7 @@ public class RoleAction extends BaseAction {
      * 作者：樊建华
      * 日期：2019年1月15日-上午11:39:41
      */
-    @GetMapping("/role_update")
+    @RequestMapping("/role_update")
     public @ResponseBody
     Map roleUpdate(Role role) {
         Integer ret = roleService.updateByPrimaryKeySelective(role);
@@ -121,7 +121,7 @@ public class RoleAction extends BaseAction {
      * 作者：樊建华
      * 日期：2019年1月15日-上午11:39:41
      */
-    @GetMapping("/role_delete")
+    @RequestMapping("/role_delete")
     public @ResponseBody
     Map roleDelete(String id) {
         Serializable ret = roleService.deleteById(id);
@@ -139,7 +139,7 @@ public class RoleAction extends BaseAction {
      * 作者：樊建华
      * 日期：2019年1月16日-下午2:44:50
      */
-    @GetMapping("/role_resoure_update")
+    @RequestMapping("/role_resoure_update")
     public @ResponseBody
     Map roleResoureUpdate(String id, String[] rids) {
         Serializable ret = roleService.updateRoleResourceById(id, rids);
@@ -157,7 +157,7 @@ public class RoleAction extends BaseAction {
      * 作者：樊建华
      * 日期：2019年1月18日-上午10:57:14
      */
-    @GetMapping("/get_resource_by_rid")
+    @RequestMapping("/get_resource_by_rid")
     @ResponseBody
     public TreeNode getResourceByRid(String rid) {
         TreeNode root = resourceService.getResourceConvertToTreeByRid(rid);
