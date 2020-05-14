@@ -1,6 +1,6 @@
 <!-- begin -->
 <div>
-    <div id="salediv" class="modal fade bs-example-modal-sm" tabindex="-1"
+    <div id="sale_chance_div" class="modal fade bs-example-modal-sm" tabindex="-1"
          role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
          data-backdrop="static">
         <div class="modal-dialog">
@@ -9,7 +9,9 @@
                     <button type="button" class="close" data-dismiss="modal"
                             aria-hidden="true">&times;
                     </button>
-                    <h4 class="modal-title" id="myModalLabel">销售机会</h4>
+                    <h4 class="modal-title" id="title">销售机会</h4>
+                    <input type="hidden" id="hidden_title" value="销售机会" />
+
                 </div>
                 <div class="modal-body">
                     <form id="frmsalechance" class="form-horizontal center-block" role="form">
@@ -135,7 +137,7 @@
                     <button type="button" class="btn btn-sm btn-default " data-dismiss="modal"
                             id="btn_close">关闭
                     </button>
-                    <button type="button" class="btn btn-sm btn-warning " id="btn_saveorupdate">提交</button>
+                    <button type="button" class="btn btn-sm btn-warning " id="btn_submit">提交</button>
                 </div>
             </div>
             <!-- /.modal-content -->

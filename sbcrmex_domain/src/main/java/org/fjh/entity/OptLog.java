@@ -1,75 +1,26 @@
 package org.fjh.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
+@ApiModel(value = "OptLog", description = "操作日志")
 public class OptLog {
     private String id;
-
+    @ApiModelProperty("要操作的URL")
     private String url;
-
+    @ApiModelProperty("操作者IP")
     private String ip;
-
+    @ApiModelProperty("操作者")
     private String user;
-
+    @ApiModelProperty("操作日期")
     private Date date;
-
+    @ApiModelProperty("操作结果")
     private String ret;
-
+    @ApiModelProperty("操作传入的参数")
     private String datas;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
-    }
-
-    public String getIp() {
-        return ip;
-    }
-
-    public void setIp(String ip) {
-        this.ip = ip == null ? null : ip.trim();
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public void setUser(String user) {
-        this.user = user == null ? null : user.trim();
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getRet() {
-        return ret;
-    }
-
-    public void setRet(String ret) {
-        this.ret = ret == null ? null : ret.trim();
-    }
-
-    public String getDatas() {
-        return datas;
-    }
-
-    public void setDatas(String datas) {
-        this.datas = datas == null ? null : datas.trim();
-    }
 }

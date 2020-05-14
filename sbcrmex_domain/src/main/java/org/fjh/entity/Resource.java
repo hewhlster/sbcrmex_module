@@ -1,12 +1,14 @@
 package org.fjh.entity;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import org.fjh.util.TreeNode;
 
 import java.util.Date;
 
 @Data
-public class Resource extends TreeNode{
+@ApiModel(value = "SaleChance", description = "待授权的资源")
+public class Resource extends TreeNode {
     private String id;
 
     private Date createdate;
@@ -29,6 +31,7 @@ public class Resource extends TreeNode{
 
     private String icon;
 
+    private String memo;
 
     public Resource() {
     }
@@ -48,105 +51,4 @@ public class Resource extends TreeNode{
         this.memo = memo;
     }
 
-    private String memo;
-
-
-
-
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
-
-    public Date getCreatedate() {
-        return createdate;
-    }
-
-    public void setCreatedate(Date createdate) {
-        this.createdate = createdate;
-    }
-
-    public Date getUpdatedate() {
-        return updatedate;
-    }
-
-    public void setUpdatedate(Date updatedate) {
-        this.updatedate = updatedate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
-    }
-
-    public String getPid() {
-        return pid;
-    }
-
-    public void setPid(String pid) {
-        this.pid = pid == null ? null : pid.trim();
-    }
-
-    public Integer getGnum() {
-        return gnum;
-    }
-
-    public void setGnum(Integer gnum) {
-        this.gnum = gnum;
-    }
-
-    public Integer getValid() {
-        return valid;
-    }
-
-    public void setValid(Integer valid) {
-        this.valid = valid;
-    }
-
-    public Integer getType() {
-        return type;
-    }
-
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    public String getIcon() {
-        return icon;
-    }
-
-    public void setIcon(String icon) {
-        this.icon = icon == null ? null : icon.trim();
-    }
-
-    public String getMemo() {
-        return memo;
-    }
-
-    public void setMemo(String memo) {
-        this.memo = memo == null ? null : memo.trim();
-    }
 }

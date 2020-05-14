@@ -14,7 +14,7 @@ $(function () {
         $JACK.showModal("userdiv", null, initModal, 0, scallback, hcallback);
     })
     //绑定提交按钮事件
-    $("#btn_user_submit").click(function () {
+    $("#btn_submit").click(function () {
         saveOrUpdate();
     })
 
@@ -27,7 +27,6 @@ $(function () {
     $("#btn_reset").click(function () {
         $("#users_Name").val("");//清空
         $("#users_rid").val("");//清空
-
         $("#table").bootstrapTable("refresh");//刷新表格
     })
 
@@ -142,8 +141,15 @@ $JACK.initTable("table", {
             }
         },
         {
-            field: "role.name",
-            title: "角色"
+            field: "roles[0].name",
+            title: "角色",
+            formatter:function (value,row,index) {
+                var ret="";
+                $(row.roles).each(function (i,item) {
+                    ret = ret+item.name+",";
+                });
+                return ret.substr(0,ret.length-1);
+            }
         },
         {
             field: "tel",

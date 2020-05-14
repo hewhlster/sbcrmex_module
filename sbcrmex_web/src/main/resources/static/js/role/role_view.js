@@ -40,6 +40,7 @@ function initModal(row) {
         //加载行数据
         $("#frmroledialog #id").val(row.id);
         $("#frmroledialog input[id='name']").val(row.name);
+        $("#frmroledialog input[id='tag']").val(row.tag);
         $("#frmroledialog #memo").val(row.memo);
     }
 }
@@ -63,17 +64,22 @@ $JACK.initTable("table", {
         {
             field: 'name',
             title: '角色名称'
-        }, {
-            field: 'memo',
-            title: '职责'
-        }, {
+        },
+        {
             field: 'createdate',
             title: '创建时间'
         },
         {
             field: 'updatedate',
             title: '更新时间'
+        },
+        {
+            field: 'tag',
+            title: '角色标签'
         }, {
+            field: 'memo',
+            title: '职责'
+        },{
             field: '',
             title: '操作',
             formatter: function (value, row, index) {
@@ -83,10 +89,9 @@ $JACK.initTable("table", {
             },
             events: {
                 "click #btn_edit": function (e, value, row, index) {
-                    saveorupdate = 1;
-                    initModal(row);
                     //弹出编辑层
-                    $("#rolediv").modal();
+                    $JACK.showModal("rolediv", row, initModal, $JACK.DIALOG_STATE_EDIT);
+
                 },
                 "click #btn_delete": function (e, value, row, index) {
                     if (window.confirm("确认删除") == 1) {
@@ -114,11 +119,11 @@ $JACK.initTable("table", {
 
 //绑定新增按钮事件
 $("#btn_new").click(function () {
-    showModal();
+    $JACK.showModal("rolediv", null, initModal, $JACK.DIALOG_STATE_ADD);
 })
 
 //绑定角色提交按钮事件
-$("#btn_role_submit").click(function () {
+$("#btn_submit").click(function () {
     saveOrUpdate();
 })
 

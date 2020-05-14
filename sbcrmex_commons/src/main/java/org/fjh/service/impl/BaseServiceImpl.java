@@ -29,6 +29,7 @@ public abstract class BaseServiceImpl<T> implements IBaseService<T> {
         Page page = PageHelper.startPage(pageEntity.getPageNumber(), pageEntity.getPageSize());
         List rows = baseMapper.listPage(pageEntity.getParams());
         pageEntity.setRows(rows);
+
         Long total = page.getTotal();
         pageEntity.setTotal(total.intValue());
         return pageEntity;

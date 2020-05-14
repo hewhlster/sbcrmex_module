@@ -93,7 +93,7 @@ $(function () {
         $("#frmsalechance").data("bootstrapValidator").resetForm(false);
     });
 
-    $("#btn_saveorupdate").click(function () {
+    $("#btn_submit").click(function () {
         // 校验表单
         $('#frmsalechance').bootstrapValidator('validate');
         var formState = $('#frmsalechance').data('bootstrapValidator').isValid();

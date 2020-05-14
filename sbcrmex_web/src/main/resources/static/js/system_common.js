@@ -128,16 +128,31 @@ var $JACK = (function () {
             callback(row);
 
         //设定层状态
-        if (modalstate)
+        if (modalstate){
         /*0:新建 1：编辑 2:只读*/
             $("#" + modalId + " #dialogstate").val(modalstate);
+            $("#" + modalId + " #saveOrupdate").val(modalstate);
+        }
+        //调整对话框标题
+        $("#" + modalId + " #title").html("");
+        if (modalstate==0) {
+
+            $("#" + modalId + " #title").html($("#" + modalId + " #hidden_title").val()+"【新增】");
+            $("#" + modalId + " #btn_submit").html("新增");
+
+        }else if(modalstate==1){
+            $("#" + modalId + " #title").html($("#" + modalId + " #hidden_title").val()+"【编辑】");
+            $("#" + modalId + " #btn_submit").html("编辑");
+
+        }
+
 
 
         //绑定层显示事件
-        if (showcallback)
+        if (showcallback!=null)
             $modal.on("show.bs.modal", showcallback);
         //绑定层关闭事件
-        if (hidecallback) {
+        if (hidecallback!=null) {
             $modal.on('hide.bs.modal', hidecallback);
         }
 
@@ -437,6 +452,7 @@ var $JACK = (function () {
             _calenders(eles, dobubble, secondNot);
         },
         DIALOG_STATE_ADD: 0,
-        DIALOG_STATE_EDIT: 1
+        DIALOG_STATE_EDIT: 1,
+        DIALOG_STATE_DETAIL: 2
     }
 })($);

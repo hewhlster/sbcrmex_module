@@ -26,7 +26,7 @@ import java.util.Map;
 
 import static org.springframework.security.core.context.SecurityContextHolder.*;
 
-@Api("用户控制器")
+@Api(description = "用户控制器")
 @Controller
 @RequestMapping("/user")
 public class UserAction extends BaseAction {
@@ -53,6 +53,7 @@ public class UserAction extends BaseAction {
     /**
      * 用途： 作者：樊建华 日期：2019年1月21日-下午5:21:17
      */
+    @ApiOperation("用户中心视图")
     @RequestMapping("/user_center_view")
     public String userCenterView(HttpSession session) {
         return "/user_center_view";

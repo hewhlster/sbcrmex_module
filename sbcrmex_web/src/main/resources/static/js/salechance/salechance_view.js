@@ -9,10 +9,19 @@ $(function () {
         window.history.back(-1);
     });
 
-    $("#salediv").on("hidden.bs.modal", function () {
+    //新增
+    $("#btn_new").click(function () {
+        $JACK.showModal("sale_chance_div",null,initModal,$JACK.DIALOG_STATE_ADD,null,hcallback);
+    });
+
+    function hcallback(){
+        $("#table").bootstrapTable('refresh');// 刷新Table，Bootstrap Table
+    }
+
+/*    $("#salediv").on("hidden.bs.modal", function () {
         setDialogCompoentState("salediv", 1);
         $("#table").bootstrapTable('refresh');// 刷新Table，Bootstrap Table
-    });
+    });*/
 
     $("#btn_reset").click(function () {
         $("#opt_CstName").val("");
@@ -108,11 +117,10 @@ $(function () {
                     return ret;
                 },
                 events: {
-                    // 0：新建 1：查看 2:编辑 3:指派
 
                     "click #btn1": function (e, value, row,
                                              index) {
-                        showModal(2, undefined, row);
+                        $JACK.showModal("sale_chance_div",null,initModal,$JACK.DIALOG_STATE_EDIT,null,hcallback);
                     },
                     "click #btn2": function (e, value, row,
                                              index) {
@@ -124,7 +132,7 @@ $(function () {
                     },
                     "click #btn4": function (e, value, row,
                                              index) {
-                        showModal(1, undefined, row);
+                        $JACK.showModal("sale_chance_div",null,initModal,$JACK.DIALOG_STATE_DETAIL,null,hcallback);
                     }
                 }
             }]
@@ -164,7 +172,7 @@ function closeOpt(id) {
 }
 
 //显示模态窗口
-//type:显示方式 0：新建 1：查看 2:编辑 3:指派
+// 0：新建 1:编辑 2：查看  3:指派
 //optno：销售机会
 function showModal(type, optno, row) {
     console.debug("showModal:row=>" + row);
@@ -175,18 +183,18 @@ function showModal(type, optno, row) {
     initModal(row);
     var url = "";
     if (typeof(type) != 'undefined') {
-        setDialogCompoentState("salediv", 0);//设定控件可用模式（全部可用）
+        setDialogCompoentState("sale_chance_div", 0);//设定控件可用模式（全部可用）
         $("#saveOrupdate").val(type);//设定操作方式
         $("#type").val(type);//设定操作方式
         //$("#optNo").val(optNo);//设定编号
         if (type == 2) {//编辑
-            setDialogCompoentState("salediv", 0);
+            setDialogCompoentState("sale_chance_div", 0);
             //$("#optNo").prop("disabled",true);
             //$("#optNo").attr("readonly","readonly");
 
         }
         else if (type == 3) {//派单
-            setDialogCompoentState("salediv", 1);
+            setDialogCompoentState("sale_chance_div", 1);
             $("#optDueUser").prop("disabled", false);
             $("#optDueDate").prop("disabled", false);
             //$("#optDueUser").removeAttr("readonly");
@@ -194,7 +202,7 @@ function showModal(type, optno, row) {
             $("#btn_saveorupdate").prop("disabled", false);//开启保存按钮
         }
         else if (type == 1) {//详细
-            setDialogCompoentState("salediv", 1);
+            setDialogCompoentState("sale_chance_div", 2);
             $("#btn_saveorupdate").prop("disabled", true);//禁用保存按钮
         }
     }

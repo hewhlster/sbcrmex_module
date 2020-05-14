@@ -7,6 +7,7 @@
         <result column="createdate" jdbcType="TIMESTAMP" property="createdate"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="memo" jdbcType="VARCHAR" property="memo"/>
+        <result column="tag" jdbcType="VARCHAR" property="tag"/>
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>
@@ -69,7 +70,7 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, updatedate, createdate, name, memo
+    id, updatedate, createdate, name, tag,memo
   </sql>
     <select id="selectByExample" parameterType="org.fjh.entity.RoleExample" resultMap="BaseResultMap">
         select
@@ -106,7 +107,7 @@
     insert into tbl_role (id, updatedate, createdate, 
       name, memo)
     values (#{id,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, #{createdate,jdbcType=TIMESTAMP}, 
-      #{name,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR})
+      #{name,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR},#{memo,jdbcType=VARCHAR})
   </insert>
     <insert id="insertSelective" parameterType="org.fjh.entity.Role">
         insert into tbl_role
@@ -122,6 +123,9 @@
             </if>
             <if test="name != null">
                 name,
+            </if>
+            <if test="tag != null">
+                tag,
             </if>
             <if test="memo != null">
                 memo,
@@ -139,6 +143,9 @@
             </if>
             <if test="name != null">
                 #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="tag != null">
+                #{tag,jdbcType=VARCHAR},
             </if>
             <if test="memo != null">
                 #{memo,jdbcType=VARCHAR},
@@ -166,6 +173,9 @@
             <if test="record.name != null">
                 name = #{record.name,jdbcType=VARCHAR},
             </if>
+            <if test="record.tag != null">
+                name = #{record.tag,jdbcType=VARCHAR},
+            </if>
             <if test="record.memo != null">
                 memo = #{record.memo,jdbcType=VARCHAR},
             </if>
@@ -180,6 +190,7 @@
         updatedate = #{record.updatedate,jdbcType=TIMESTAMP},
         createdate = #{record.createdate,jdbcType=TIMESTAMP},
         name = #{record.name,jdbcType=VARCHAR},
+        name = #{record.tag,jdbcType=VARCHAR},
         memo = #{record.memo,jdbcType=VARCHAR}
         <if test="_parameter != null">
             <include refid="Update_By_Example_Where_Clause"/>
@@ -195,7 +206,10 @@
                 createdate = #{createdate,jdbcType=TIMESTAMP},
             </if>
             <if test="name != null">
-                name = #{name,jdbcType=VARCHAR},
+            name = #{name,jdbcType=VARCHAR},
+        </if>
+            <if test="tag != null">
+                name = #{tag,jdbcType=VARCHAR},
             </if>
             <if test="memo != null">
                 memo = #{memo,jdbcType=VARCHAR},
@@ -208,6 +222,8 @@
     set updatedate = #{updatedate,jdbcType=TIMESTAMP},
       createdate = #{createdate,jdbcType=TIMESTAMP},
       name = #{name,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+
       memo = #{memo,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>

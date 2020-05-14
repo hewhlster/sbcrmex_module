@@ -1,7 +1,10 @@
 package org.fjh.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class Customer {
     private String id;
 

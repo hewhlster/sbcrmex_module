@@ -1,5 +1,6 @@
 package org.fjh.entity;
 
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -7,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 @Data
+@ApiModel(value = "User",description = "系统操作者")
 public class User {
     private String id;
 

@@ -8,7 +8,8 @@
                 <button type="button" class="close" data-dismiss="modal"
                         aria-hidden="true">&times;
                 </button>
-                <h4 class="modal-title" id="myModalLabel">角色</h4>
+                <h4 class="modal-title" id="title">角色</h4>
+                <input type="hidden" id="hidden_title" value="角色" />
             </div>
             <div class="modal-body">
                 <form id="frmroledialog" class="form-horizontal center-block" role="form">
@@ -19,6 +20,13 @@
                             <label for="name" class="col-sm-2 control-label"> 角色名称</label>
                             <div class="col-sm-4">
                                 <input id="name" name="name" type="text" class="form-control"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 2%;">
+                            <label for="name" class="col-sm-2 control-label"> 角色标识</label>
+                            <div class="col-sm-4">
+                                <input  placeholder="ROLE_" id="tag" name="tag" type="text" class="form-control"
                                 />
                             </div>
                         </div>
@@ -39,7 +47,7 @@
                 <button type="button" class="btn btn-sm btn-warning	"
                         data-dismiss="modal">关闭
                 </button>
-                <button type="button" class="btn btn-sm btn-success" id="btn_role_submit">提交</button>
+                <button type="button" class="btn btn-sm btn-success" id="btn_submit">提交</button>
             </div>
         </div>
         <!-- /.modal-content -->
