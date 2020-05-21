@@ -9,4 +9,13 @@
 }
 */
 
+//全局AJAX设定
+$(function () {
+    $.ajaxSetup({
+        function (XMLHttpRequest, textStatus) {
+            console.debug(textStatus);
+        }
+    })
+})
+
 

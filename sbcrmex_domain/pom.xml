@@ -21,5 +21,12 @@
             <version>0.6.1</version>
         </dependency>
 
+        <!--hibernate校验框架-->
+        <!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+        </dependency>
+
     </dependencies>
 </project>

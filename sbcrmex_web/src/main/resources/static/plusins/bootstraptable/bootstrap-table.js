@@ -444,15 +444,22 @@
 
                 success: function (data, textStatus, jqXHR) {
 
-                    self.renderTable(data);
+                    if(data.code){
+                        if (data.code!='10000'){
 
-                    self.trigger('load-success', data);
+                            data = data.data;
 
-                    $(window).resize(function () {
+                            self.renderTable(data);
 
-                        self.autoReSize();
+                            self.trigger('load-success', data);
 
-                    });
+                            $(window).resize(function () {
+
+                                self.autoReSize();
+
+                            });
+                        }
+                    }
 
                 },
 

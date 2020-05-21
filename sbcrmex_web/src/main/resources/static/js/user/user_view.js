@@ -37,24 +37,25 @@ $(function () {
 
 function saveOrUpdate() {
     var url = "";
-    var dialog_state = $("#dialog-state").val();
-    if (dialog_state == $JACK.DIALOG_STATE_ADD)
+
+
+    if ($("#userdiv #btn_submit").prop("mode")==$JACK.DIALOG_STATE_ADD)
         url = "/user/user_add";
-    else if (dialog_state == $JACK.DIALOG_STATE_EDIT)
+    else if ($("#userdiv #btn_submit").prop("mode")==$JACK.DIALOG_STATE_EDIT)
         url = "/user/user_update";
+
     $.ajax({
         url: url,
         method: "post",
         data: $("#frmuser").serialize(),
         success: function (json) {
-            if (json.msg == "ok")
-                $JACK.n_success("操作成功.");
+            if (json.code == "10000")
+                $JACK.n_success(json.message);
+                $("#userdiv").modal("hide");
+                $("#table").bootstrapTable("refresh");//刷新表格
             else {
-                var j = $.parseJSON(json);
-                $JACK.n_success(j.msg);
+                $JACK.n_warning(json.data);
             }
-            $("#userdiv").modal("hide");
-            $("#table").bootstrapTable("refresh");//刷新表格
         }
     });
 }
@@ -75,6 +76,9 @@ function initModal(row) {
         $("#frmuser select[id='rid']").val(row.rid);
         $("#code").val(row.code);
         $("#id").val(row.id);
+        $("#email").val(row.email);
+        $("#moblie").val(row.moblie);
+
     }
 }
 
@@ -124,7 +128,7 @@ $JACK.initTable("table", {
     columns: [
         {
             field: "code",
-            title: "编号"
+            title: "帐号"
         },
         {
             field: "name",
@@ -183,17 +187,19 @@ $JACK.initTable("table", {
                     if (window.confirm("确认删除") == 1) {
                         $.getJSON("/user/user_delete?id=" + row.id,
                             function (json) {
-                                if (json.msg === "ok") {
-                                    $JACK.n_success("删除成功");
+                                if (json.code === "10000") {
+                                    $JACK.n_success(json.message);
                                     $("#table").bootstrapTable("refresh");//刷新表格
                                 } else {
-                                    $JACK.n_info($.parseJSON(json).msg);
+                                    $JACK.n_info(json.message);
                                 }
                             }, "json");
                     }
                 }
             }
-        }
+        },
+
     ]
+
 });
         	 

@@ -1,4 +1,5 @@
-﻿<html xmlns:th="http://www.thymeleaf.org">
+﻿<html xmlns:th="http://www.thymeleaf.org"
+      >
 
 <base th:href="${#request.getContextPath()}+'/'">
 
@@ -29,6 +30,14 @@
             border-radius: 5px;
         }
 
+        .errorTipCls{
+            border: solid 1px hotpink;
+            background-color:yellow;
+            text-align: center;
+            font-size: large;
+            color:black;
+            display: block;
+        }
            
     </style>
     <title>登陆</title>
@@ -39,12 +48,16 @@
     <div id="loginbox" class="col-sm-offset-4 col-sm-4 col-sm-offset-4">
         <form  action="/auth/login" method="post" class="form form-horizontal"  id="frmlogin">
             <h1 class="text-center">客户管理系统</h1>
-
+            <div class="form-group" >
+                <div class="col-sm-12 ">
+                    <span th:if="${param.error}" th:text="${session?.SPRING_SECURITY_LAST_EXCEPTION?.message}" class="help-block errorTipCls" style="color:red;"></span>
+                </div>
+            </div>
             <div class="form-group">
                 <label for="usersCode" class="col-sm-2 control-label">帐号</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="usersCode"
-                           name="usersCode" placeholder="手机号/邮箱"/>
+                           name="usersCode" placeholder="工号/手机号/邮箱"/>
                 </div>
             </div>
 

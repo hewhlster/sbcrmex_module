@@ -2,24 +2,22 @@ package org.fjh.action;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.fjh.authentication.JackUserDetails;
-import org.fjh.entity.Resource;
 import org.fjh.entity.User;
 import org.fjh.service.IResourceService;
 import org.fjh.service.IUserService;
+import org.fjh.util.ResponseResult;
 import org.fjh.util.PageEntity;
 import org.fjh.util.TreeNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -156,13 +154,11 @@ public class UserAction extends BaseAction {
     }
 
     @ApiOperation("增加用户")
-    @GetMapping("/user_add")
+    @PostMapping("/user_add")
     public @ResponseBody
-    Map addAccount(User user) {
+    ResponseResult addAccount(@Valid User user) {
         int ret = userService.add(user);
-        Map map = new HashMap();
-        map.put("msg", "ok");
-        return map;
+        return ResponseResult.ok(ret);
     }
 
     @GetMapping("/regist")
@@ -186,7 +182,7 @@ public class UserAction extends BaseAction {
      */
     @PostMapping("/user_pager")
     public @ResponseBody
-    Map pager(@RequestBody Object param) {
+    ResponseResult pager(@RequestBody Object param) {
 
         // 绑定查询参数
         PageEntity<User> pageEx = super.bindPagerParams(param);
@@ -196,7 +192,8 @@ public class UserAction extends BaseAction {
 
         map.put("total", pageEx.getTotal());
         map.put("rows", pageEx.getRows());
-        return map;
+
+        return ResponseResult.ok(map);
 
     }
 
@@ -264,12 +261,13 @@ public class UserAction extends BaseAction {
 
     @GetMapping("/user_menu")
     public @ResponseBody
-    List<TreeNode> getMenuByRid(HttpSession session) {
+    ResponseResult getMenuByRid(HttpSession session) {
         JackUserDetails jackUserDetails = (JackUserDetails) getContext().getAuthentication() .getPrincipal();
         String id = jackUserDetails.getId();
 
         List<TreeNode> ret = resourceService.getMenuByUidEx(id);
-        return ret;
+
+        return ResponseResult.ok(ret);
     }
 
     @GetMapping("/user_detail")

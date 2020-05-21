@@ -207,9 +207,9 @@
             </if>
             <if test="name != null">
             name = #{name,jdbcType=VARCHAR},
-        </if>
+           </if>
             <if test="tag != null">
-                name = #{tag,jdbcType=VARCHAR},
+                tag = #{tag,jdbcType=VARCHAR},
             </if>
             <if test="memo != null">
                 memo = #{memo,jdbcType=VARCHAR},
@@ -223,7 +223,6 @@
       createdate = #{createdate,jdbcType=TIMESTAMP},
       name = #{name,jdbcType=VARCHAR},
       tag = #{tag,jdbcType=VARCHAR},
-
       memo = #{memo,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}
   </update>

@@ -1,7 +1,7 @@
 $(function () {
     $.getJSON("user/user_menu", function (json) {
         $('.sidebar-menu').mtMenu({
-            data: json,
+            data: json.data, //后端以调整统一返回数据格式2020/5/16
             menuName: "name",
             menuId: "id",
             subMenus: "children",

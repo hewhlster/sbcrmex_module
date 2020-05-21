@@ -1,15 +1,12 @@
 var saveorupdate = 0;//保存或更新 0 保存 1更新
 
-function showModal() {
-    saveorupdate = 0;
-    $("#rolediv").modal();
-}
 
 function saveOrUpdate() {
     var url = "";
-    if (saveorupdate == 0)
+
+    if ( $("#rolediv #btn_submit").prop("mode")=='0')
         url = "/role/role_add";
-    else if (saveorupdate == 1)
+    else if ($("#rolediv #btn_submit").prop("mode")=='1')
         url = "/role/role_update";
 
     $.ajax({
@@ -17,14 +14,14 @@ function saveOrUpdate() {
         method: "post",
         data: $("#frmroledialog").serialize(),
         success: function (json) {
-            if (json.msg == "ok")
+            if (json.code == "10000"){
                 $JACK.n_success("操作成功。");
+                $("#rolediv").modal("hide");
+                $("#table").bootstrapTable("refresh");//刷新表格
+            }
             else
-                $JACK.n_danger("操作失败！！");
+                $JACK.n_danger(json.message);
 
-
-            $("#rolediv").modal("hide");
-            $("#table").bootstrapTable("refresh");//刷新表格
         }
     });
 }
@@ -96,14 +93,13 @@ $JACK.initTable("table", {
                 "click #btn_delete": function (e, value, row, index) {
                     if (window.confirm("确认删除") == 1) {
                         $.post("/role/role_delete?id=" + row.id, function (json) {
-                            if (json.msg == "ok") {
-                                $JACK.n_success("删除成功");
+                            if (json.code=='10000') {
+                                $JACK.n_success(json.message);
                                 $("#table").bootstrapTable("refresh");//刷新表格
+                                $("#roleresourcedialog").modal("hide");
                             } else {
-                                $JACK.n_success(json.msg);
+                                $JACK.n_warning(json.message);
                             }
-
-                            $("#roleresourcedialog").modal("hide");
                         }, "json");
                     }
                 },

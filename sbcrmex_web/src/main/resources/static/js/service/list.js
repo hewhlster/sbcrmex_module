@@ -11,7 +11,7 @@ $(function () {
 
     // 新建按钮
     $("#btn_service_new").click(function () {
-        $("#servicedialog").modal('show');
+        $JACK.showModal("servicedialog",null,initServiceInfoFormData,$JACK.DIALOG_STATE_ADD);
     });
 
     $("#btn_search").click(function () {
@@ -94,9 +94,7 @@ $(function () {
                     "click #btn_service_info": function (e, value, row,
                                                          index) {
                         console.log(value + "  " + index);
-                        //initServiceInfoFormData(row);
-                        //$("#serviceinfodialog").modal("show");
-                        $JACK.showModal("serviceinfodialog", row, initServiceInfoFormData);
+                        $JACK.showModal("serviceinfodialog", row, initServiceInfoFormData,$JACK.DIALOG_STATE_DETAIL);
                     }
                 }
             }]

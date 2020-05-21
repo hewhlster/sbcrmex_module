@@ -2,8 +2,6 @@
 <div id="userdiv" class="modal fade bs-example-modal-sm" tabindex="-1"
      role="dialog" aria-labelledby="myModalLabel" aria-hidden="false"
      data-backdrop="static">
-    <!--对话状态 0:新建 1：编辑-->
-    <input id="dialogstate" type="hidden" value="0"/>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -21,10 +19,10 @@
                 <div class="modal-body row" id="rightMagnageModelBody">
                     <div class="col-sm-12 column">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" for="code"> 编号</label>
+                            <label class="col-sm-2 control-label" for="code"> 帐号</label>
                             <div class="col-sm-4">
                                 <input type="text" name="code" id="code"
-                                       class="form-control" value="" placeholder="请输入用户编号"/>
+                                       class="form-control" value="" placeholder="请输入用户帐号"/>
                             </div>
                             <div class="inscop">
                                 <label class="col-sm-2 control-label"> 姓名</label>
@@ -75,6 +73,13 @@
                                            id="tel"/>
                                 </div>
                             </div>
+                            <div class="inscop">
+                                <label class="col-sm-2 control-label"> 电子邮箱</label>
+                                <div class="col-sm-4">
+                                    <input name="email" type="text" class="form-control"
+                                           id="email"/>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="inscop">
@@ -89,7 +94,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">详细描述</label>
                             <div class="col-sm-10">
-									<textarea name="remark" id="remark" class="form-control" rows="7"
+									<textarea name="remark" id="remark" class="form-control" rows="4"
                                               style="resize: none;"></textarea>
                             </div>
                         </div>

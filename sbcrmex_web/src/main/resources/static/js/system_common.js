@@ -24,7 +24,7 @@ var $JACK = (function () {
                 pageNum: params.offset / params.limit + 1
             };
         }
-    };
+    };// end var
 
     function _initTable(id, settings) {
         var params = $.extend({}, bootstrapTable_default, settings);
@@ -33,6 +33,17 @@ var $JACK = (function () {
         }
         if (typeof params.columns === 'undefined') {
             throw '初始化表格【' + id + '】' + '失败，请配置columns参数！';
+        }
+        //加载数据成功处理
+        params.
+            onLoadSuccess=function (result) {
+            //判断是否是统一返回结果格式，否则用默认处理
+            if( result.code ){
+                if(result.code=='10000'){
+                    console.debug(result.data);
+                    $("#"+id).bootstrapTable("load",result.data);
+                }
+            }
         }
         $('#' + id).bootstrapTable(params);
         $("body").on("click", "[data-table-action]", function (a) {
@@ -128,11 +139,12 @@ var $JACK = (function () {
             callback(row);
 
         //设定层状态
-        if (modalstate){
+        //if (modalstate){
         /*0:新建 1：编辑 2:只读*/
             $("#" + modalId + " #dialogstate").val(modalstate);
             $("#" + modalId + " #saveOrupdate").val(modalstate);
-        }
+            $("#" + modalId + " #btn_submit").prop("mode",modalstate);
+        //}
         //调整对话框标题
         $("#" + modalId + " #title").html("");
         if (modalstate==0) {
@@ -144,6 +156,9 @@ var $JACK = (function () {
             $("#" + modalId + " #title").html($("#" + modalId + " #hidden_title").val()+"【编辑】");
             $("#" + modalId + " #btn_submit").html("编辑");
 
+        }else if(modalstate==2){
+            $("#" + modalId + " #title").html($("#" + modalId + " #hidden_title").val()+"【查看详情】");
+            $("#" + modalId + " #btn_submit").html("关闭")
         }
 
 

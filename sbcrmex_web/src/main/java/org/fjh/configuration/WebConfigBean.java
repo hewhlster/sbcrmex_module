@@ -3,6 +3,7 @@ package org.fjh.configuration;
 import org.fjh.inptercetor.IsLoginedIntercept;
 import org.fjh.inptercetor.LogIntercept;
 import org.fjh.inptercetor.RoleIntercept;
+import org.hibernate.validator.HibernateValidator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -10,6 +11,9 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -106,6 +110,20 @@ public class WebConfigBean implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         //registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
 
+    }
+
+    /**
+     * 增加hibernate校验器
+     */
+    @Bean
+    public Validator ValidatorConfiguration() {
+            ValidatorFactory validatorFactory = Validation.byProvider( HibernateValidator.class )
+                    .configure()
+                    .addProperty( "hibernate.validator.fail_fast", "true" )
+                    .buildValidatorFactory();
+            Validator validator = validatorFactory.getValidator();
+
+            return validator;
     }
 
 }

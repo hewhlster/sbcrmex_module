@@ -1,11 +1,8 @@
-package org.fjh.unit;
+package org.fjh.util;
 
-import com.alibaba.fastjson.annotation.JSONField;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiOperation;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -36,6 +33,11 @@ public class  ResponseResult {
         this.data = data;
     }
 
+    public ResponseResult(String code, String message) {
+        this.code = code;
+        this.message = message;
+    }
+
     public ResponseResult(String code, Object data) {
         this.code = code;
         this.data = data;
@@ -45,12 +47,28 @@ public class  ResponseResult {
         this.data = data;
     }
 
-    public static ResponseResult ok(Object data){
-        ResponseResult success=new ResponseResult(data);
+    public ResponseResult() {
+    }
+
+    public static ResponseResult ok(){
+        ResponseResult success=new ResponseResult();
         success.setCode("10000");
         success.setMessage("操作成功");
         success.setDate(new Date());
         return success;
+    }
+
+
+    public static ResponseResult ok(Object data){
+        ResponseResult success=ok();
+        success.setData(data);
+        return success;
+    }
+
+    public static ResponseResult ng(String code,String message, Object data){
+        ResponseResult ng=new ResponseResult(code,message,data);
+        ng.setDate(new Date());
+        return ng;
     }
 
     public static ResponseResult ng(Object data){
@@ -61,9 +79,11 @@ public class  ResponseResult {
         return         ng(code,"操作失败",data);
     }
 
-    public static ResponseResult ng(String code,String message, Object data){
-        ResponseResult ng=new ResponseResult(code,message,data);
-        ng.setDate(new Date());
-        return ng;
+    public static ResponseResult ng(String code,String message){
+        return         ng(code,message,null);
     }
+
+
+
+
 }

@@ -15,8 +15,6 @@
     <packaging>jar</packaging>
 
     <dependencies>
-
-
         <dependency>
             <groupId>org.fjh</groupId>
             <artifactId>sbcrmex_domain</artifactId>

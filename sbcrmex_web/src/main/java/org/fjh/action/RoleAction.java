@@ -1,25 +1,21 @@
 package org.fjh.action;
 
-import com.alibaba.fastjson.JSONObject;
 import org.fjh.entity.Role;
-import org.fjh.entity.SaleChance;
 import org.fjh.service.IResourceService;
 import org.fjh.service.IRoleService;
+import org.fjh.util.ResponseResult;
 import org.fjh.util.PageEntity;
 import org.fjh.util.TreeNode;
-import org.omg.CORBA.INTERNAL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 
 @Controller
@@ -46,15 +42,11 @@ public class RoleAction extends BaseAction {
 
     @RequestMapping("/role_pager")
     public @ResponseBody
-    Map pager(@RequestBody Object param) {
+    ResponseResult pager(@RequestBody Object param) {
         PageEntity<Role> pageEx = super.bindPagerParams(param);
 
         PageEntity<Role> ret = roleService.pagerEx(pageEx);
-        Map map = new HashMap<>();
-
-        map.put("total", ret.getTotal());
-        map.put("rows", ret.getRows());
-        return map;
+        return ResponseResult.ok(ret);
     }
 
 
@@ -86,16 +78,13 @@ public class RoleAction extends BaseAction {
      */
     @RequestMapping("/role_add")
     public @ResponseBody
-    Map roleAdd(Role role) {
+    ResponseResult roleAdd(Role role) {
         logger.info(role.toString());
         Integer ret = roleService.insertSelective(role);
-        Map map = new HashMap();
         if (ret > 0)
-            map.put("msg", "ok");
+            return ResponseResult.ok();
         else
-            map.put("msg", "ng");
-
-        return map;
+            return ResponseResult.ng("增加角色失败.",null);
     }
 
     /**
@@ -105,15 +94,10 @@ public class RoleAction extends BaseAction {
      */
     @RequestMapping("/role_update")
     public @ResponseBody
-    Map roleUpdate(Role role) {
+    ResponseResult roleUpdate(Role role) {
         Integer ret = roleService.updateByPrimaryKeySelective(role);
-        Map map = new HashMap();
-        if (ret > 0)
-            map.put("msg", "ok");
-        else
-            map.put("msg", "ng");
 
-        return map;
+        return ResponseResult.ok(ret);
     }
 
     /**
@@ -123,15 +107,12 @@ public class RoleAction extends BaseAction {
      */
     @RequestMapping("/role_delete")
     public @ResponseBody
-    Map roleDelete(String id) {
+    ResponseResult roleDelete(String id) {
         Serializable ret = roleService.deleteById(id);
-        Map map = new HashMap();
         if (ret != null)
-            map.put("msg", "ok");
+            return ResponseResult.ok();
         else
-            map.put("msg", "ng");
-
-        return map;
+            return ResponseResult.ng("20000","删除角色失败");
     }
 
     /**
