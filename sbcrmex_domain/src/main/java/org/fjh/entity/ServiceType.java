@@ -4,11 +4,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @ApiModel(value = "ServiceType", description = "服务类型")
-public class ServiceType {
+public class ServiceType implements Serializable {
     private String id;
 
     private Date createdate;

@@ -443,7 +443,8 @@
                 dataType: "JSON",
 
                 success: function (data, textStatus, jqXHR) {
-
+                     //调整以下为应对返回的统一数据格式
+                    //樊建华 2020/5/20
                     if(data.code){
                         if (data.code!='10000'){
 
@@ -458,6 +459,14 @@
                                 self.autoReSize();
 
                             });
+                        } else
+                        {
+                            var _errorMsg = '<tr><td colspan="' + self.options.columns.length + '"><div style="display: block;text-align: center;">' + data.message + '</div></td></tr>'
+
+                            $tbody.html(_errorMsg);
+
+                            self.trigger('load-error', textStatus, data.code);
+
                         }
                     }
 

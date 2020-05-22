@@ -1,7 +1,6 @@
 package org.fjh.service;
 
 import org.fjh.entity.CustomerCommunication;
-import org.fjh.util.PageEntity;
 
 public interface ICustomerCommunicationService  extends  IBaseService<CustomerCommunication>{
     /**

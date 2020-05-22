@@ -19,13 +19,7 @@
 
         <dependency>
             <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_domain</artifactId>
-            <version>0.6.1</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_customer</artifactId>
+            <artifactId>sbcrmex_api</artifactId>
             <version>0.6.1</version>
         </dependency>
     </dependencies>

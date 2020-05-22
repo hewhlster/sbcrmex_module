@@ -1,5 +1,6 @@
 package org.fjh.action;
 
+import org.apache.dubbo.config.annotation.Reference;
 import org.fjh.entity.Role;
 import org.fjh.service.IResourceService;
 import org.fjh.service.IRoleService;
@@ -24,9 +25,9 @@ public class RoleAction extends BaseAction {
 
     private Logger logger = LoggerFactory.getLogger(RoleAction.class);
 
-    @Autowired
+    @Reference
     private IRoleService roleService;
-    @Autowired
+    @Reference
     private IResourceService resourceService;
 
     /**

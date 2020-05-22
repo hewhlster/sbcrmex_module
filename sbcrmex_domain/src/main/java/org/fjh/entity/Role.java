@@ -4,12 +4,13 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @ApiModel(value = "Role", description = "角色")
 @Data
-public class Role {
+public class Role implements Serializable {
     private String id;
 
     private Date updatedate;

@@ -1,16 +1,15 @@
 package org.fjh.service.impl;
 
+import org.apache.dubbo.config.annotation.Service;
 import org.fjh.dao.UserMapper;
 import org.fjh.entity.User;
 import org.fjh.entity.UserExample;
 import org.fjh.service.IUserService;
 import org.fjh.util.MD5Helper;
-import org.fjh.util.PageEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -124,8 +123,6 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
 
     @Override
     public User findUserRolesById(String uid) {
-
-
 
         return null;
     }

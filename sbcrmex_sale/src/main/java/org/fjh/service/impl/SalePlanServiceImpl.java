@@ -1,14 +1,14 @@
 package org.fjh.service.impl;
 
-import org.fjh.dao.CustomerMapper;
 import org.fjh.dao.SalePlanMapper;
 import org.fjh.entity.SalePlan;
 import org.fjh.service.ICustomerLinkmanService;
+import org.fjh.service.ICustomerService;
 import org.fjh.service.ISalePlanService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.Service;
 
 import java.util.Date;
 
@@ -18,10 +18,6 @@ public class SalePlanServiceImpl extends BaseServiceImpl<SalePlan> implements IS
 
 
     private SalePlanMapper salePlanMapper;
-    @Autowired
-    private CustomerMapper customerMapper;
-    @Autowired
-    private ICustomerLinkmanService customerLinkmanService;
 
     @Autowired
     public void setSalePlanMapper(SalePlanMapper salePlanMapper) {

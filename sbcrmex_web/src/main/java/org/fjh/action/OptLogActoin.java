@@ -1,5 +1,6 @@
 package org.fjh.action;
 
+import org.apache.dubbo.config.annotation.Reference;
 import org.fjh.entity.OptLog;
 import org.fjh.service.IOptlogService;
 import org.fjh.util.PageEntity;
@@ -13,7 +14,7 @@ import java.util.Map;
 @Controller
 @RequestMapping("/optlog")
 public class OptLogActoin extends BaseAction {
-    @Autowired
+    @Reference
     private IOptlogService optLogService;
 
     @GetMapping("/optlog_view")

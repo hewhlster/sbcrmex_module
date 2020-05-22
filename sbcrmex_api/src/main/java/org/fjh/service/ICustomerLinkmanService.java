@@ -1,7 +1,6 @@
 package org.fjh.service;
 
 import org.fjh.entity.CustomerLinkman;
-import org.fjh.util.PageEntity;
 
 /**
  * 作用：

@@ -38,7 +38,6 @@ $(function () {
 function saveOrUpdate() {
     var url = "";
 
-
     if ($("#userdiv #btn_submit").prop("mode")==$JACK.DIALOG_STATE_ADD)
         url = "/user/user_add";
     else if ($("#userdiv #btn_submit").prop("mode")==$JACK.DIALOG_STATE_EDIT)
@@ -49,10 +48,11 @@ function saveOrUpdate() {
         method: "post",
         data: $("#frmuser").serialize(),
         success: function (json) {
-            if (json.code == "10000")
+            if (json.code == "10000"){
                 $JACK.n_success(json.message);
                 $("#userdiv").modal("hide");
                 $("#table").bootstrapTable("refresh");//刷新表格
+            }
             else {
                 $JACK.n_warning(json.data);
             }
@@ -197,7 +197,7 @@ $JACK.initTable("table", {
                     }
                 }
             }
-        },
+        }
 
     ]
 

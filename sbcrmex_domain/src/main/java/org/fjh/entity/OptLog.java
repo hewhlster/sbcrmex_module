@@ -4,11 +4,12 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @ApiModel(value = "OptLog", description = "操作日志")
-public class OptLog {
+public class OptLog implements Serializable {
     private String id;
     @ApiModelProperty("要操作的URL")
     private String url;

@@ -1,5 +1,6 @@
 package org.fjh.action;
 
+import org.apache.dubbo.config.annotation.Reference;
 import org.fjh.entity.CustomerLinkman;
 import org.fjh.service.ICustomerLinkmanService;
 import org.fjh.util.PageEntity;
@@ -25,7 +26,7 @@ import java.util.Map;
 public class CustomerLinkmanAction extends BaseAction {
     private Logger logger = LoggerFactory.getLogger(CustomerLinkmanAction.class);
 
-    @Autowired
+    @Reference
     private ICustomerLinkmanService customerLinkmanService;
 
     @PostMapping("/linkman_pager")

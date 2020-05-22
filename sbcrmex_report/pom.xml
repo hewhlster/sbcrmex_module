@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-
     <parent>
         <groupId>org.fjh</groupId>
         <artifactId>sbcrmex</artifactId>
@@ -11,17 +10,16 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+
     <artifactId>sbcrmex_report</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
-
-
         <dependency>
             <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_domain</artifactId>
+            <artifactId>sbcrmex_api</artifactId>
             <version>0.6.1</version>
         </dependency>
-
     </dependencies>
+
 </project>

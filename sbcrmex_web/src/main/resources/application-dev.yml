@@ -1,15 +1,3 @@
-#dubbo:
-#  application:
-#    name: sb_crm_consumer
-#    registries:
-#    - session: 10000
-#      timeout: 5000
-#protocol:
-#    name: dubbo
-#    port: 20880
-#  registry:
-#    address: zookeeper://192.168.5.44:2181
-
 logging:
   config: classpath:logback.xml
 
@@ -67,3 +55,8 @@ spring:
   session:
     store-type: redis
 
+dubbo:
+  registry:
+    address: zookeeper://192.168.5.44:2181
+  application:
+    name: sb_crm_ex_web

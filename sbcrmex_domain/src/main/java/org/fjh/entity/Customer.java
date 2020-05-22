@@ -2,10 +2,11 @@ package org.fjh.entity;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
-public class Customer {
+public class Customer implements Serializable {
     private String id;
 
     private Date createdate;

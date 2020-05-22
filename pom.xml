@@ -20,9 +20,11 @@
 
     <!--工程模块-->
     <modules>
-        <module>sbcrmex_web</module>
+
         <module>sbcrmex_domain</module>
         <module>sbcrmex_commons</module>
+        <module>sbcrmex_api</module>
+        <module>sbcrmex_web</module>
         <module>sbcrmex_authorization</module>
         <module>sbcrmex_user</module>
         <module>sbcrmex_customer</module>
@@ -30,6 +32,7 @@
         <module>sbcrmex_sale</module>
         <module>sbcrmex_service</module>
         <module>sbcrmex_system</module>
+
     </modules>
 
     <properties>
@@ -46,6 +49,8 @@
         <springfox-swagger2>2.9.2</springfox-swagger2>
         <springfox-swagger-ui>2.9.2</springfox-swagger-ui>
         <pagehelper>1.2.10</pagehelper>
+        <dubbo-spring>2.7.6</dubbo-spring>
+
     </properties>
 
 
@@ -57,6 +62,12 @@
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <version>2.1.0.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -73,7 +84,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok}</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
 
 
@@ -127,6 +138,15 @@
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>${pagehelper}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter -->
+        <dependency>
+            <groupId>org.apache.dubbo</groupId>
+            <artifactId>dubbo-spring-boot-starter</artifactId>
+            <version>${dubbo-spring}</version>
+        </dependency>
+
+
     </dependencies>
 
     </dependencyManagement>

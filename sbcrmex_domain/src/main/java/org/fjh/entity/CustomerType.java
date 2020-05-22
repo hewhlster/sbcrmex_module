@@ -1,8 +1,9 @@
 package org.fjh.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class CustomerType {
+public class CustomerType implements Serializable {
     private String id;
 
     private Date createdate;

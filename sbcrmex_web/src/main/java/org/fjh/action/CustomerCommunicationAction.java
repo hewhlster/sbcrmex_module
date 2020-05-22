@@ -1,5 +1,6 @@
 package org.fjh.action;
 
+import org.apache.dubbo.config.annotation.Reference;
 import org.fjh.entity.CustomerCommunication;
 import org.fjh.entity.User;
 import org.fjh.service.ICustomerCommunicationService;
@@ -22,7 +23,7 @@ public class CustomerCommunicationAction extends BaseAction {
     private Logger logger = LoggerFactory.getLogger(CustomerCommunicationAction.class);
 
 
-    @Autowired
+    @Reference
     private ICustomerCommunicationService customerCommunicationServiceImpl;
 
     @GetMapping("/customer_history_communication_view")

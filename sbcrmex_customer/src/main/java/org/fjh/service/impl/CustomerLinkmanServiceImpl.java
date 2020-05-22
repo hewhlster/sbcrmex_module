@@ -3,11 +3,8 @@ package org.fjh.service.impl;
 import org.fjh.dao.CustomerLinkmanMapper;
 import org.fjh.entity.CustomerLinkman;
 import org.fjh.service.ICustomerLinkmanService;
-import org.fjh.util.PageEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.apache.dubbo.config.annotation.Service;
 
 /**
  * 作用：

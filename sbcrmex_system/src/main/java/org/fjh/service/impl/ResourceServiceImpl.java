@@ -1,19 +1,19 @@
 package org.fjh.service.impl;
 
+import org.apache.dubbo.config.annotation.Service;
 import org.fjh.dao.ResourceMapper;
 import org.fjh.dao.RoleMapper;
 import org.fjh.entity.Resource;
 import org.fjh.entity.ResourceExample;
 import org.fjh.entity.Role;
 import org.fjh.service.IResourceService;
-import org.fjh.service.IRoleService;
 import org.fjh.util.Menu;
 import org.fjh.util.TreeHelper;
 import org.fjh.util.TreeNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -23,7 +23,9 @@ import java.util.*;
 
 @Service
 //@CacheConfig(cacheNames = "resourceService") // 设置全局value = "resource"
-public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements IResourceService {
+public class ResourceServiceImpl
+        extends BaseServiceImpl<Resource>
+        implements IResourceService {
     private Logger logger = LoggerFactory.getLogger(ResourceServiceImpl.class);
 
     private ResourceMapper resourceMapper;
@@ -181,6 +183,7 @@ public class ResourceServiceImpl extends BaseServiceImpl<Resource> implements IR
     public List<Resource> selectAll() {
         return resourceMapper.selectByExample(new ResourceExample());
     }
+
 
 
     /*

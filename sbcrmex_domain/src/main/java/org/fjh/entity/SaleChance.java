@@ -3,11 +3,12 @@ package org.fjh.entity;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @ApiModel(value = "SaleChance", description = "销售机会")
-public class SaleChance {
+public class SaleChance implements Serializable {
     private String id;
 
     private Date createdate;

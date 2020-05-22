@@ -7,7 +7,7 @@ import org.fjh.entity.Customer;
 import org.fjh.service.ICustomerService;
 import org.fjh.util.PageEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.Service;
 
 import java.util.List;
 

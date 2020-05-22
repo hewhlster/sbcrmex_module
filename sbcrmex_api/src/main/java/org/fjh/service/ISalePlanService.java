@@ -1,7 +1,6 @@
 package org.fjh.service;
 
-import org.fjh.entity.SaleChance;
-import org.fjh.service.IBaseService;
+import org.fjh.entity.SalePlan;
 
 import java.util.Date;
 
@@ -12,7 +11,7 @@ import java.util.Date;
  * 版权:樊建华
  */
 
-public interface ISaleChanceService extends IBaseService<SaleChance> {
+public interface ISalePlanService extends IBaseService<SalePlan> {
     /**
      * 用途：
      * 作者：樊建华

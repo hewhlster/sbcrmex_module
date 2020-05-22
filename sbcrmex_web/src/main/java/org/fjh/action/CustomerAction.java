@@ -1,6 +1,7 @@
 package org.fjh.action;
 
 
+import org.apache.dubbo.config.annotation.Reference;
 import org.fjh.entity.Customer;
 import org.fjh.entity.CustomerLostCommunication;
 import org.fjh.entity.User;
@@ -30,10 +31,10 @@ import java.util.Map;
 @RequestMapping("/customer")
 public class CustomerAction extends BaseAction {
     private Logger logger = LoggerFactory.getLogger(Customer.class);
-    @Autowired
+    @Reference
     private ICustomerService customerService;
 
-    @Autowired
+    @Reference
     private ICustomerLostCommunicationServcie customerLostCommunicationServcie;
 
     @GetMapping("/customer_view")

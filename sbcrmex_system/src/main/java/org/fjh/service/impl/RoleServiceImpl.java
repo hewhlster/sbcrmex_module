@@ -1,5 +1,6 @@
 package org.fjh.service.impl;
 
+import org.apache.dubbo.config.annotation.Service;
 import org.fjh.dao.RoleMapper;
 import org.fjh.dao.UserMapper;
 import org.fjh.entity.Resource;
@@ -8,17 +9,18 @@ import org.fjh.entity.RoleExample;
 import org.fjh.entity.User;
 import org.fjh.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Service
-public class RoleServiceImpl extends BaseServiceImpl<Role> implements IRoleService {
+@Component
+public class RoleServiceImpl
+        extends BaseServiceImpl<Role>
+        implements IRoleService {
 
 
     private RoleMapper roleMapper;
-    @Autowired
-    private UserMapper userMapper;
 
     @Autowired
     public void setRoleMapper(RoleMapper roleMapper) {
@@ -63,10 +65,6 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements IRoleServi
         return page;
     }*/
 
-
-
-
-
     @Override
     public Integer deleteById(String id) {
         // 先删除角色和资源中间的数据
@@ -88,16 +86,19 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements IRoleServi
         return ret;
     }
 
+    @Override
+    public List<Role> getRolesByUid(String id) {
+        return roleMapper.selectUserRolesByUid(id);
+    }
 
     @Override
     public List<Resource> getResourcesByUid(String id) {
         //根据用户得到其角色
-        User user = userMapper.selectByPrimaryKey(id);
+       // User user = userMapper.selectByPrimaryKey(id);
       //  String rid = user.getUsersRid();
        // List<Resource> resources = roleMapper.getResourcesByRid(rid);
         //依据角色到其资源
         return null;//resources;
     }
-
 
 }

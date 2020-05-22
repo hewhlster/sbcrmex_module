@@ -33,4 +33,6 @@ public interface IResourceService extends IBaseService<Resource> {
     public Integer deleteById(String id);
 
     public List<Resource> selectAll();
+
+
 }

@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/sbcrmex_api" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sbcrmex_authorization" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sbcrmex_commons" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/sbcrmex_customer" charset="UTF-8" />

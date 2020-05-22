@@ -16,7 +16,6 @@
 
 
     <dependencies>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -27,60 +26,18 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-
         <dependency>
             <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_domain</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_commons</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_user</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_sale</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_customer</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_service</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_report</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_system</artifactId>
-            <version>${project.version}</version>
+            <artifactId>sbcrmex_api</artifactId>
+            <version>0.6.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.fjh</groupId>
             <artifactId>sbcrmex_authorization</artifactId>
-            <version>${project.parent.version}</version>
+            <version>0.6.1</version>
         </dependency>
+
     </dependencies>
 
 

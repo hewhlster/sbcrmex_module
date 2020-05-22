@@ -1,6 +1,6 @@
 package org.fjh.action;
 
-import org.fjh.dao.ResourceMapper;
+import org.apache.dubbo.config.annotation.Reference;
 import org.fjh.entity.Resource;
 import org.fjh.service.IResourceService;
 import org.fjh.util.TreeNode;
@@ -28,7 +28,7 @@ import java.util.Map;
 public class ResourceAtion extends BaseAction {
     private Logger logger = LoggerFactory.getLogger(ResourceAtion.class);
 
-    @Autowired
+    @Reference
     private IResourceService resourceService;
 	
 	/*
@@ -121,8 +121,6 @@ public class ResourceAtion extends BaseAction {
     /**
      * 前端由bootstarpTable换成bootstrapTreeTable
      */
-    @Autowired
-    ResourceMapper resourceMapper;
 
     @RequestMapping("/pager")
     public @ResponseBody

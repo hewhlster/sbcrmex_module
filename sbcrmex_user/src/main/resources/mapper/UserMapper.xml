@@ -13,8 +13,11 @@
         <result column="addr" jdbcType="VARCHAR" property="addr"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
         <result column="state" jdbcType="VARCHAR" property="state"/>
-        <!--角色信息-->
-        <association property="roles" column="id"  select="org.fjh.dao.RoleMapper.selectUserRolesByUid" fetchType="lazy"/>
+        <!--角色信息
+        <association property="roles" column="id"
+                     select="org.fjh.dao.RoleMapper.selectUserRolesByUid"
+                     fetchType="lazy"/>
+        -->
     </resultMap>
     <sql id="Example_Where_Clause">
         <where>

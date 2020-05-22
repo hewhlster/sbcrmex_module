@@ -1,5 +1,6 @@
 package org.fjh.action;
 
+import org.apache.dubbo.config.annotation.Reference;
 import org.fjh.entity.Service;
 import org.fjh.service.IServiceService;
 import org.fjh.util.PageEntity;
@@ -30,7 +31,7 @@ import java.util.Map;
 public class ServiceAction extends BaseAction {
     private Logger logger = LoggerFactory.getLogger(SaleAction.class);
 
-    @Autowired
+    @Reference
     private IServiceService serviceService;
 
     // 返回服务列表视图

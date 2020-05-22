@@ -1,6 +1,6 @@
 package org.fjh.action;
 
-import org.fjh.dao.SaleChanceMapper;
+import org.apache.dubbo.config.annotation.Reference;
 import org.fjh.entity.Customer;
 import org.fjh.entity.SaleChance;
 import org.fjh.entity.SalePlan;
@@ -8,6 +8,7 @@ import org.fjh.service.ICustomerService;
 import org.fjh.service.ISaleChanceService;
 import org.fjh.service.ISalePlanService;
 import org.fjh.util.PageEntity;
+import org.fjh.util.ResponseResult;
 import org.fjh.util.SpecialDateEditor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,11 +31,11 @@ import java.util.Map;
 public class SaleAction extends BaseAction {
     private Logger logger = LoggerFactory.getLogger(SaleAction.class);
 
-    @Autowired
+    @Reference
     private ISaleChanceService saleChanceService;
-    @Autowired
+    @Reference
     private ISalePlanService salePlanService;
-    @Autowired
+    @Reference
     private ICustomerService customerService;
 
 
@@ -236,7 +237,7 @@ public class SaleAction extends BaseAction {
 
     @PostMapping("/sale_plan_pager")
     public @ResponseBody
-    Map salePlanPager(@RequestBody Object param) {
+    ResponseResult salePlanPager(@RequestBody Object param) {
         PageEntity<SalePlan> pageEx = super.bindPagerParams(param);
 
         PageEntity<SalePlan> ret = salePlanService.pagerEx(pageEx);
@@ -244,13 +245,13 @@ public class SaleAction extends BaseAction {
 
         map.put("total", ret.getTotal());
         map.put("rows", ret.getRows());
-        return map;
+        return ResponseResult.ok(map);
     }
 
 
     @PostMapping("/sale_chance_pager")
     public @ResponseBody
-    Map saleChancePager(@RequestBody Object param) {
+    ResponseResult saleChancePager(@RequestBody Object param) {
         PageEntity<SaleChance> pageEx = super.bindPagerParams(param);
 
         PageEntity<SaleChance> ret = saleChanceService.pagerEx(pageEx);
@@ -258,7 +259,7 @@ public class SaleAction extends BaseAction {
 
         map.put("total", ret.getTotal());
         map.put("rows", ret.getRows());
-        return map;
+        return ResponseResult.ok(map);
     }
 
     // 注册日期转换器

@@ -23,7 +23,7 @@ $(function () {
 
 //加载销售机会数据
 $JACK.initTable("table", {
-    url: "/sale/sale_chance_pager",
+    url: "/sale/sale_plan_pager",
     //得到查询的参数
     queryParams: function (params) {
         //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的

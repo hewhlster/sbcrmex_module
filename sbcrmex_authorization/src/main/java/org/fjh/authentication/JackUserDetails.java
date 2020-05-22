@@ -1,6 +1,6 @@
 package org.fjh.authentication;
 
-import lombok.AllArgsConstructor;
+import lombok.*;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

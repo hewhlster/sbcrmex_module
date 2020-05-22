@@ -1,14 +1,14 @@
 package org.fjh.service.impl;
 
 
+import org.apache.dubbo.config.annotation.Service;
 import org.fjh.dao.CustomerCommunicationMapper;
 import org.fjh.entity.CustomerCommunication;
 import org.fjh.service.ICustomerCommunicationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 @Service
-public class CustomerCommunicationServicempl extends BaseServiceImpl<CustomerCommunication> implements ICustomerCommunicationService{
+public class CustomerCommunicationServicempl extends BaseServiceImpl<CustomerCommunication> implements ICustomerCommunicationService {
 
     private CustomerCommunicationMapper customerCommunicationMapper;
 

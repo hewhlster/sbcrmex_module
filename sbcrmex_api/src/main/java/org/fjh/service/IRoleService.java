@@ -21,7 +21,7 @@ public interface IRoleService extends IBaseService<Role> {
      */
     public Integer updateRoleResourceById(String id, String[] rids);
 
-
     public List<Resource> getResourcesByUid(String id);
 
+     List<Role> getRolesByUid(String id);
 }

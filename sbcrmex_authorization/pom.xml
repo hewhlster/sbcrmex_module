@@ -16,11 +16,7 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_commons</artifactId>
-            <version>${project.parent.version}</version>
-        </dependency>
+
 
         <dependency>
             <groupId>org.fjh</groupId>

@@ -120,7 +120,7 @@ $(function () {
 
                     "click #btn1": function (e, value, row,
                                              index) {
-                        $JACK.showModal("sale_chance_div",null,initModal,$JACK.DIALOG_STATE_EDIT,null,hcallback);
+                        $JACK.showModal("sale_chance_div",row,initModal,$JACK.DIALOG_STATE_EDIT,null,hcallback);
                     },
                     "click #btn2": function (e, value, row,
                                              index) {
@@ -132,7 +132,7 @@ $(function () {
                     },
                     "click #btn4": function (e, value, row,
                                              index) {
-                        $JACK.showModal("sale_chance_div",null,initModal,$JACK.DIALOG_STATE_DETAIL,null,hcallback);
+                        $JACK.showModal("sale_chance_div",row,initModal,$JACK.DIALOG_STATE_DETAIL,null,hcallback);
                     }
                 }
             }]

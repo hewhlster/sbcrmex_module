@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="sbcrmex_api" />
         <module name="sbcrmex_authorization" />
         <module name="sbcrmex_commons" />
         <module name="sbcrmex_customer" />
@@ -20,6 +21,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="sbcrmex_api" target="1.8" />
       <module name="sbcrmex_authorization" target="1.8" />
       <module name="sbcrmex_commons" target="1.8" />
       <module name="sbcrmex_customer" target="1.8" />

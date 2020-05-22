@@ -2,16 +2,17 @@ package org.fjh.service.impl;
 
 import org.fjh.dao.ReportMapper;
 import org.fjh.service.IReportService;
-import org.fjh.service.impl.BaseServiceImpl;
 import org.fjh.util.PageEntity;
 import org.fjh.util.higtchart.HighCharts;
 import org.fjh.util.higtchart.Serie;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.apache.dubbo.config.annotation.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 @Service
+@Component
 public class ReportServiceImpl extends BaseServiceImpl<Object> implements IReportService {
 
     private ReportMapper mapper;

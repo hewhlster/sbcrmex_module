@@ -1,5 +1,6 @@
 package org.fjh.action;
 
+import org.apache.dubbo.config.annotation.Reference;
 import org.fjh.service.IReportService;
 import org.fjh.util.PageEntity;
 import org.fjh.util.higtchart.HighCharts;
@@ -16,7 +17,7 @@ import java.util.Map;
 @RequestMapping("/report")
 public class ReportAction extends BaseAction {
 
-    @Autowired
+    @Reference
     private IReportService reportService;
 
     /**

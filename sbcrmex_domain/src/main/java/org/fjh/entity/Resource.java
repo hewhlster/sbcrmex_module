@@ -4,11 +4,12 @@ import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import org.fjh.util.TreeNode;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @ApiModel(value = "SaleChance", description = "待授权的资源")
-public class Resource extends TreeNode {
+public class Resource extends TreeNode implements Serializable {
     private String id;
 
     private Date createdate;

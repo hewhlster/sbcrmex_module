@@ -10,12 +10,13 @@ import org.hibernate.validator.constraints.pl.REGON;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Data
 @ApiModel(value = "User",description = "系统操作者")
-public class User {
+public class User implements Serializable {
     private String id;
 
     private Date createdate;

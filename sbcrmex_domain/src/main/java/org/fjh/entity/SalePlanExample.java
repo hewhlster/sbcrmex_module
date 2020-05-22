@@ -1,10 +1,11 @@
 package org.fjh.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class SalePlanExample {
+public class SalePlanExample implements Serializable {
     protected String orderByClause;
 
     protected boolean distinct;

@@ -16,10 +16,9 @@
 
     <dependencies>
 
-
         <dependency>
             <groupId>org.fjh</groupId>
-            <artifactId>sbcrmex_domain</artifactId>
+            <artifactId>sbcrmex_api</artifactId>
             <version>0.6.1</version>
         </dependency>
 
@@ -28,6 +27,14 @@
             <artifactId>sbcrmex_user</artifactId>
             <version>0.6.1</version>
         </dependency>
+
+
+
+<!--        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>2.8.0</version>
+        </dependency>-->
 
     </dependencies>
 </project>

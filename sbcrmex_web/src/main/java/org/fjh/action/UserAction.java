@@ -2,16 +2,17 @@ package org.fjh.action;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.dubbo.config.annotation.Reference;
 import org.fjh.authentication.JackUserDetails;
 import org.fjh.entity.User;
 import org.fjh.service.IResourceService;
+import org.fjh.service.IRoleService;
 import org.fjh.service.IUserService;
 import org.fjh.util.ResponseResult;
 import org.fjh.util.PageEntity;
 import org.fjh.util.TreeNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,10 +29,12 @@ import static org.springframework.security.core.context.SecurityContextHolder.*;
 @Controller
 @RequestMapping("/user")
 public class UserAction extends BaseAction {
-    @Autowired
+    @Reference
     private IUserService userService;
-    @Autowired
+    @Reference
     private IResourceService resourceService;
+    @Reference
+    private IRoleService roleService;
 
     private static Logger logger = LoggerFactory.getLogger(UserAction.class);
 
@@ -205,6 +208,8 @@ public class UserAction extends BaseAction {
         String id = jackUserDetails.getId();
 
         User loginedUser=userService.getUserById(id);
+        loginedUser.setRoles(roleService.getRolesByUid(id));
+
         session.setAttribute("logineduser",loginedUser);
 
         return "main";
