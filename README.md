@@ -47,12 +47,12 @@
 |sbcrmex_commons|公共模块||
 |sbcrmex_domain|实体定义||
 |sbcrmex_authorization|认证模块||
-|sbcrmex_customer|客户模块|微服务|dubbo|20880|
-|sbcrmex_report|报表模块|微服务|dubbo|20881|
-|sbcrmex_sale|销售模块|微服务|dubbo|20882|
-|sbcrmex_service|服务模块|微服务|dubbo|20883|
-|sbcrmex_system|系统模块|微服务|dubbo|20884|
-|sbcrmex_user|用户模块|微服务|dubbo|20885|
+|sbcrmex_customer|客户模块|微服务|dubbo://|20880|
+|sbcrmex_report|报表模块|微服务|dubbo://|20881|
+|sbcrmex_sale|销售模块|微服务|dubbo://|20882|
+|sbcrmex_service|服务模块|微服务|dubbo://|20883|
+|sbcrmex_system|系统模块|微服务|dubbo://|20884|
+|sbcrmex_user|用户模块|微服务|dubbo://|20885|
 |sbcrmex_web|操作界面|web服务|http|8080|
 
 
