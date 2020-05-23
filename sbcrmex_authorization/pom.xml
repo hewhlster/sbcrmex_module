@@ -12,18 +12,13 @@
     </parent>
 
     <artifactId>sbcrmex_authorization</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <dependencies>
-
-
-
         <dependency>
             <groupId>org.fjh</groupId>
             <artifactId>sbcrmex_domain</artifactId>
-            <version>${project.parent.version}</version>
         </dependency>
-
 
         <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
         <dependency>

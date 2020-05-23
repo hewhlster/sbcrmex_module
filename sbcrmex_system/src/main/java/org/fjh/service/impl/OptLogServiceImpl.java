@@ -3,7 +3,6 @@ package org.fjh.service.impl;
 import org.apache.dubbo.config.annotation.Service;
 import org.fjh.dao.OptLogMapper;
 import org.fjh.entity.OptLog;
-import org.fjh.service.IBaseService;
 import org.fjh.service.IOptlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,7 +18,9 @@ import org.springframework.stereotype.Component;
 //@Transactional
 @Service
 @Component
-public class OptLogServiceImpl extends BaseServiceImpl<OptLog> implements IOptlogService {
+public class OptLogServiceImpl
+        extends BaseServiceImpl<OptLog>
+        implements IOptlogService {
 
     private OptLogMapper logMapper;
 

@@ -2,11 +2,9 @@ package org.fjh.service.impl;
 
 import org.apache.dubbo.config.annotation.Service;
 import org.fjh.dao.RoleMapper;
-import org.fjh.dao.UserMapper;
 import org.fjh.entity.Resource;
 import org.fjh.entity.Role;
 import org.fjh.entity.RoleExample;
-import org.fjh.entity.User;
 import org.fjh.service.IRoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

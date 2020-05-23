@@ -20,7 +20,6 @@
 
     <!--工程模块-->
     <modules>
-
         <module>sbcrmex_domain</module>
         <module>sbcrmex_commons</module>
         <module>sbcrmex_api</module>
@@ -32,7 +31,6 @@
         <module>sbcrmex_sale</module>
         <module>sbcrmex_service</module>
         <module>sbcrmex_system</module>
-
     </modules>
 
     <properties>
@@ -50,12 +48,11 @@
         <springfox-swagger-ui>2.9.2</springfox-swagger-ui>
         <pagehelper>1.2.10</pagehelper>
         <dubbo-spring>2.7.6</dubbo-spring>
-
+        <spring-boot-devtools>2.1.0.RELEASE</spring-boot-devtools>
     </properties>
 
 
 
-    <dependencyManagement>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -67,16 +64,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <version>2.1.0.RELEASE</version>
+            <version>${spring-boot-devtools}</version>
         </dependency>
 
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis-spring}</version>
         </dependency>
-
-
 
         <!--@Setter,@getter,@ToString...-->
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -116,7 +115,6 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -130,7 +128,6 @@
             <artifactId>druid</artifactId>
             <version>${druid}</version>
         </dependency>
-
 
         <!-- 分页助手 -->
         <dependency>
@@ -147,8 +144,25 @@
         </dependency>
 
 
-    </dependencies>
+        <dependency>
+            <groupId>org.fjh</groupId>
+            <artifactId>sbcrmex_commons</artifactId>
+            <version>0.6.1</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.fjh</groupId>
+            <artifactId>sbcrmex_domain</artifactId>
+            <version>0.6.1</version>
+        </dependency>
+
+            <dependency>
+                <groupId>org.fjh</groupId>
+                <artifactId>sbcrmex_api</artifactId>
+                <version>0.6.1</version>
+            </dependency>
+
+        </dependencies>
     </dependencyManagement>
 
 
@@ -203,6 +217,10 @@
                 <plugin>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
                 </plugin>
             </plugins>
         </pluginManagement>

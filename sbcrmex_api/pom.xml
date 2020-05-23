@@ -11,20 +11,19 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>sbcrmex_api</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.fjh</groupId>
             <artifactId>sbcrmex_commons</artifactId>
-            <version>0.6.1</version>
         </dependency>
 
         <dependency>
             <groupId>org.fjh</groupId>
             <artifactId>sbcrmex_domain</artifactId>
-            <version>0.6.1</version>
         </dependency>
 
     </dependencies>
+
 </project>

@@ -15,12 +15,22 @@
     <packaging>jar</packaging>
 
     <dependencies>
-
-
         <dependency>
             <groupId>org.fjh</groupId>
             <artifactId>sbcrmex_api</artifactId>
-            <version>0.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.fjh</groupId>
+            <artifactId>sbcrmex_domain</artifactId>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

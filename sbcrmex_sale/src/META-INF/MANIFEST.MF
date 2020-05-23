@@ -1,0 +1,34 @@
+Manifest-Version: 1.0
+Class-Path: spring-context-support-1.0.6.jar fastjson-1.2.47.jar logba
+ ck-core-1.2.3.jar logback-classic-1.2.3.jar spring-plugin-core-1.2.0.
+ RELEASE.jar lombok-1.18.10.jar druid-1.1.10.jar swagger-annotations-1
+ .5.20.jar commons-codec-1.11.jar springfox-spring-web-2.9.2.jar dubbo
+ -2.7.6.jar log4j-to-slf4j-2.11.1.jar audience-annotations-0.5.0.jar s
+ pringfox-swagger-ui-2.9.2.jar log4j-api-2.11.1.jar spring-boot-2.1.0.
+ RELEASE.jar mysql-connector-java-6.0.6.jar curator-framework-2.8.0.ja
+ r spring-plugin-metadata-1.2.0.RELEASE.jar springfox-spi-2.9.2.jar sp
+ ring-boot-starter-jdbc-2.1.0.RELEASE.jar HikariCP-3.2.0.jar slf4j-api
+ -1.7.26.jar spring-boot-starter-logging-2.1.0.RELEASE.jar spring-core
+ -5.1.2.RELEASE.jar spring-boot-autoconfigure-2.1.0.RELEASE.jar spring
+ fox-core-2.9.2.jar gson-2.8.5.jar pagehelper-spring-boot-autoconfigur
+ e-1.2.10.jar curator-recipes-2.8.0.jar pagehelper-spring-boot-starter
+ -1.2.10.jar mapstruct-1.2.0.Final.jar dubbo-spring-boot-starter-2.7.6
+ .jar spring-boot-devtools-2.1.0.RELEASE.jar zookeeper-3.4.13.jar jul-
+ to-slf4j-1.7.25.jar springfox-schema-2.9.2.jar curator-client-2.8.0.j
+ ar dubbo-spring-boot-autoconfigure-2.7.6.jar swagger-models-1.5.20.ja
+ r guava-16.0.1.jar hibernate-validator-6.0.13.Final.jar spring-jcl-5.
+ 1.2.RELEASE.jar dubbo-spring-boot-autoconfigure-compatible-2.7.6.jar 
+ validation-api-2.0.1.Final.jar netty-all-4.1.29.Final.jar jline-0.9.9
+ 4.jar spring-context-5.1.2.RELEASE.jar log4j-1.2.17.jar spring-tx-5.1
+ .2.RELEASE.jar javax.annotation-api-1.3.2.jar spring-expression-5.1.2
+ .RELEASE.jar byte-buddy-1.9.3.jar commons-lang3-3.8.1.jar mybatis-spr
+ ing-2.0.2.jar mybatis-spring-boot-starter-2.1.0.jar mybatis-3.5.2.jar
+  springfox-swagger-common-2.9.2.jar snakeyaml-1.23.jar jsqlparser-1.2
+ .jar jackson-annotations-2.9.0.jar slf4j-log4j12-1.7.25.jar spring-jd
+ bc-5.1.2.RELEASE.jar spring-beans-5.1.2.RELEASE.jar jboss-logging-3.3
+ .2.Final.jar springfox-swagger2-2.9.2.jar classmate-1.4.0.jar pagehel
+ per-5.1.8.jar mybatis-spring-boot-autoconfigure-2.1.0.jar spring-boot
+ -starter-2.1.0.RELEASE.jar spring-aop-5.1.2.RELEASE.jar javassist-3.2
+ 0.0-GA.jar
+Main-Class: AppSaleStart
+

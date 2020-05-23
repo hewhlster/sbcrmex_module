@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>sbcrmex_commons</artifactId>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <dependencies>
 
@@ -33,17 +33,9 @@
         </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
         </dependency>
-
-
 
         <!--@Setter,@getter,@ToString...-->
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -65,8 +57,6 @@
         </dependency>
 
 
-
-
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
@@ -78,7 +68,6 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
         </dependency>
-
 
         <!-- 分页助手 -->
         <dependency>
@@ -98,6 +87,7 @@
             <version>2.7.6</version>
             <type>pom</type>
         </dependency>
+
         <dependency>
             <groupId>org.apache.curator</groupId>
             <artifactId>curator-recipes</artifactId>
@@ -117,6 +107,5 @@
         </dependency>
 
     </dependencies>
-
 
 </project>
