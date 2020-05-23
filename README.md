@@ -54,6 +54,14 @@
 |sbcrmex_user|用户模块|微服务|dubbo|20885|
 |sbcrmex_web|操作界面|web服务|http|8080|
 
+
+# 项目管理
+|名称|作用|
+|---|---|
+|MAVEN|依赖管理|
+|GIT|版本控制|
+|JENKINS|CI/CD|
+
 # 接口API
 内置了swagger，打开http://localhost/swagger-ui.html就能访问
 
