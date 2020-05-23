@@ -8,6 +8,7 @@
 |框架名|作用 |版本 |
 |---|---|---|
 |SpringBoot|基础脚手架|魂牵梦萦|
+|SpringSecurity|认证授权|
 |Mybatis|操作数据库||
 |druid|数据源||
 |Mysqlconnector|数据库连接驱动|
