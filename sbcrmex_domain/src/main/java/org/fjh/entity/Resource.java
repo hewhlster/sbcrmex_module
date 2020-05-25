@@ -1,5 +1,6 @@
 package org.fjh.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 import org.fjh.util.TreeNode;
@@ -9,6 +10,8 @@ import java.util.Date;
 
 @Data
 @ApiModel(value = "SaleChance", description = "待授权的资源")
+@TableName("tbl_resource")
+
 public class Resource extends TreeNode implements Serializable {
     private String id;
 

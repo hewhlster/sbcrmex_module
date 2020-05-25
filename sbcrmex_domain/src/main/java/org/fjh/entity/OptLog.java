@@ -1,5 +1,6 @@
 package org.fjh.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -9,6 +10,7 @@ import java.util.Date;
 
 @Data
 @ApiModel(value = "OptLog", description = "操作日志")
+@TableName("tbl_opt_log")
 public class OptLog implements Serializable {
     private String id;
     @ApiModelProperty("要操作的URL")

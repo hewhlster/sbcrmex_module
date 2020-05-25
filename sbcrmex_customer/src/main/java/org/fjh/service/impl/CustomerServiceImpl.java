@@ -1,7 +1,5 @@
 package org.fjh.service.impl;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import org.fjh.dao.CustomerMapper;
 import org.fjh.entity.Customer;
 import org.fjh.service.ICustomerService;
@@ -30,12 +28,12 @@ public class CustomerServiceImpl extends BaseServiceImpl<Customer> implements IC
 
     @Override
     public PageEntity<Customer> lostPager(PageEntity<Customer> pageEntity) {
-        Page page = PageHelper.startPage(pageEntity.getPageNumber(), pageEntity.getPageSize());
+     /*   Page page = PageHelper.startPage(pageEntity.getPageNumber(), pageEntity.getPageSize());
         List rows = customerMapper.lostListPage(pageEntity.getParams());
         pageEntity.setRows(rows);
         Long total = page.getTotal();
-        pageEntity.setTotal(total.intValue());
-        return pageEntity;
+        pageEntity.setTotal(total.intValue());*/
+        return super.pagerEx(pageEntity);
     }
 
 

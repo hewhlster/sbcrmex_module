@@ -49,17 +49,25 @@
         <pagehelper>1.2.10</pagehelper>
         <dubbo-spring>2.7.6</dubbo-spring>
         <spring-boot-devtools>2.1.0.RELEASE</spring-boot-devtools>
+        <mybatis-plus>3.3.1</mybatis-plus>
     </properties>
 
 
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>slf4j-log4j12</artifactId>
+                    <groupId>org.slf4j</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -71,11 +79,12 @@
 
     <dependencyManagement>
         <dependencies>
-        <dependency>
+
+<!--        <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>${mybatis-spring}</version>
-        </dependency>
+        </dependency>-->
 
         <!--@Setter,@getter,@ToString...-->
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
@@ -121,7 +130,15 @@
             <version>${mysql-connector-java}</version>
         </dependency>
 
-        <!-- 数据源 -->
+        <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>${mybatis-plus}</version>
+        </dependency>
+
+
+            <!-- 数据源 -->
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -129,13 +146,13 @@
             <version>${druid}</version>
         </dependency>
 
-        <!-- 分页助手 -->
+        <!-- 分页助手
         <dependency>
             <groupId>com.github.pagehelper</groupId>
             <artifactId>pagehelper-spring-boot-starter</artifactId>
             <version>${pagehelper}</version>
         </dependency>
-
+        -->
         <!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo-spring-boot-starter -->
         <dependency>
             <groupId>org.apache.dubbo</groupId>

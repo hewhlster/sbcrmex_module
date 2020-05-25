@@ -1,7 +1,13 @@
 package org.fjh.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
+
+@Data
+@TableName("tbl_customer_type")
 
 public class CustomerType implements Serializable {
     private String id;

@@ -1,29 +1,24 @@
-logging:
-  config: classpath:logback.xml
 
-mybatis:
-  mapper-locations: classpath*:mapper/*.xml
-  type-aliases-package: org.fjh.entity
+  #mybatis:
+  #mapper-locations: classpath*:mapper/*.xml
+  #type-aliases-package: org.fjh.entity
 
-pagehelper:
-  auto-dialect: =true
-  reasonable: true
+  #pagehelper:
+  #auto-dialect: =true
+  #reasonable: true
 
-#web server
-server:
-  port: 80
 
 spring:
-  datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    druid:
-      initialSize: 5
-      maxActive: 20
-      minIdle: 5
-    password: jack
-    type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://192.168.5.44:3306/crm_ex?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
-    username: root
+    #datasource:
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+    #druid:
+    #initialSize: 5
+    #maxActive: 20
+    #minIdle: 5
+    #password: jack
+    #type: com.alibaba.druid.pool.DruidDataSource
+    #url: jdbc:mysql://192.168.5.44:3306/crm_ex?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+  #username: root
   mvc:
     static-path-pattern: /**
   #     view:
@@ -34,15 +29,15 @@ spring:
   #     add-mappings: true
   #     static-locations: classpath:/static/
 
-  slave:
-    driver-class-name: com.mysql.jdbc.Driver
-    druid:
-      initialSize: 5
-      maxActive: 20
-      minIdle: 5
-    password: jack
-    url: jdbc:mysql://192.168.5.44:3307/crm?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
-    username: root
+    #slave:
+    #driver-class-name: com.mysql.cj.jdbc.Driver
+      #druid:
+      #initialSize: 5
+      #maxActive: 20
+    #minIdle: 5
+    #password: jack
+    #url: jdbc:mysql://192.168.5.44:3307/crm?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+    #username: root
     #热部署生效
   thymeleaf:
     mode: HTML
@@ -58,5 +53,9 @@ spring:
 dubbo:
   registry:
     address: zookeeper://192.168.5.44:2181
+    check: false
   application:
     name: sb_crm_ex_web
+  consumer:
+    check: false #dubbo启动时是否检查引用的服务是否存在
+

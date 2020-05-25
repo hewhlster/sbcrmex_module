@@ -28,8 +28,7 @@ public class RoleServiceImpl
 
     @Override
     public List<Role> getAll() {
-        RoleExample example = new RoleExample();
-        return roleMapper.selectByExample(example);
+        return roleMapper.selectList(null);
     }
 
     @Override
@@ -68,7 +67,7 @@ public class RoleServiceImpl
         // 先删除角色和资源中间的数据
         roleMapper.deleteRoleResourceById(id);
         // TODO Auto-generated method stub
-        return roleMapper.deleteByPrimaryKey(id);
+        return roleMapper.deleteById(id);
     }
 
     @Override

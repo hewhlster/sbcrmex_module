@@ -1,9 +1,9 @@
 package org.fjh.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.dubbo.config.annotation.Service;
 import org.fjh.dao.UserMapper;
 import org.fjh.entity.User;
-import org.fjh.entity.UserExample;
 import org.fjh.service.IUserService;
 import org.fjh.util.MD5Helper;
 import org.slf4j.Logger;
@@ -37,36 +37,48 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
         }
 
         //准备查询参数
-        UserExample example = new UserExample();
+/*        UserExample example = new UserExample();
         UserExample.Criteria criteria =  example.createCriteria();
 
         criteria.andCodeEqualTo(uid);
-        criteria.andPasswordEqualTo(upass);
+        criteria.andPasswordEqualTo(upass);*/
 
-        int row =  userMapper.selectByExample(example).size();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("code",uid);
+        queryWrapper.eq("password",upass);
+        return userMapper.selectOne(queryWrapper);
+
+/*        int row =  userMapper.selectByExample(example).size();
         logger.info("row=" + row);
         if (row > 0) {
             return userMapper.selectByExample(example).get(0);
         } else {
             return null;
-        }
+        }*/
     }
 
     @Override
     public User getUserByUname(String uname) {
         //准备查询参数
-        UserExample example = new UserExample();
+/*        UserExample example = new UserExample();
         UserExample.Criteria criteria =  example.createCriteria();
 
         criteria.andNameEqualTo(uname);
-        return userMapper.selectByExample(example).get(0);
+                return userMapper.selectByExample(example).get(0);
+*/
+
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("name",uname);
+        return  userMapper.selectOne(queryWrapper);
+
     }
 
     @Override
     public List<User> getAll() {
-        UserExample example = new UserExample();
+/*        UserExample example = new UserExample();
         UserExample.Criteria criteria =  example.createCriteria();
-        return userMapper.selectByExample(example);
+        return userMapper.selectByExample(example);*/
+        return userMapper.selectList(null);
     }
 
 
@@ -82,8 +94,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        //int ret = userMapper.insertSelective(user);
+        int ret = userMapper.insert(user);
 
-        int ret = userMapper.insertSelective(user);
         return ret;
     }
 
@@ -96,29 +109,41 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
     @Override
     public int modifyPassword(String usercode, String oldpass, String newpass) {
         //准备查询参数
-        UserExample example = new UserExample();
+/*        UserExample example = new UserExample();
         UserExample.Criteria criteria =  example.createCriteria();
 
         criteria.andCodeEqualTo(usercode);
         criteria.andPasswordEqualTo(oldpass);
 
-        int row =  userMapper.selectByExample(example).size();
+        int row =  userMapper.selectByExample(example).size();*/
 
-        if (row == 0)
+        //准备查询参数
+        QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
+        queryWrapper.eq("code",usercode).eq("password",oldpass);
+
+        User ret= userMapper.selectOne(queryWrapper);
+
+        if (ret == null)
             return 0;//原始密码错误
 
+        queryWrapper.clear();//清除之前参数
+        queryWrapper.eq("code",usercode);
+
         User user = new User();
-        user.setCode(usercode);
         user.setPassword(newpass);
 
-        example = new UserExample();
+        return  userMapper.update(user,queryWrapper);
+
+/*        example = new UserExample();
         criteria =  example.createCriteria();
 
         criteria.andPasswordEqualTo(newpass);
 
 
         //修改密码
-        return userMapper.updateByExampleSelective(user,example);
+       // return userMapper.updateByExampleSelective(user,example);
+        return userMapper.update(user,example);*/
+
     }
 
     @Override
@@ -150,19 +175,25 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
             e.printStackTrace();
         }
         user.setPassword(password);
-        return userMapper.updateByPrimaryKeySelective(user);
+       // return userMapper.updateByPrimaryKeySelective(user);
+        return userMapper.updateById(user);
+
     }
 
     @Override
     public int deleteUser(String id) {
         // TODO Auto-generated method stub
-        return userMapper.deleteByPrimaryKey(id);
+        //return userMapper.deleteByPrimaryKey(id);
+        return userMapper.deleteById(id);
+
     }
 
     @Override
     public User getUserById(String id) {
         // TODO Auto-generated method stub
-        return userMapper.selectByPrimaryKey(id);
+       // return userMapper.selectByPrimaryKey(id);
+        return userMapper.selectById(id);
+
     }
 
     @Override

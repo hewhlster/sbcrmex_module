@@ -30,5 +30,5 @@ Class-Path: spring-context-support-1.0.6.jar fastjson-1.2.47.jar logba
  per-5.1.8.jar mybatis-spring-boot-autoconfigure-2.1.0.jar spring-boot
  -starter-2.1.0.RELEASE.jar spring-aop-5.1.2.RELEASE.jar javassist-3.2
  0.0-GA.jar
-Main-Class: AppReportStart
+Main-Class: org.fjh.AppReportStart
 

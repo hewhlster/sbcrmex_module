@@ -9,7 +9,7 @@
 |---|---|---|
 |SpringBoot|基础脚手架|魂牵梦萦|
 |SpringSecurity|认证授权|
-|Mybatis|操作数据库||
+|Mybatis-plus|操作数据库||
 |druid|数据源||
 |Mysqlconnector|数据库连接驱动|
 |pagehelper|分页助手|

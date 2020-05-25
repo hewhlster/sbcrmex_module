@@ -1,5 +1,6 @@
 package org.fjh.configuration;
 
+import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.fjh.interceptor.EmptyFieldInterceptor;
 import org.fjh.interceptor.IdCUDateInterceptor;
@@ -21,4 +22,11 @@ public class MybatisConfiguration {
         sqlSessionFactory.getConfiguration().addInterceptor(new EmptyFieldInterceptor());
         return "interceptor";
     }
+
+    //Mybatis-plus 分页查询拦截器
+    @Bean
+      public PaginationInterceptor paginationInterceptor() {
+                 PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
+                 return paginationInterceptor;
+       }
 }

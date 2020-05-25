@@ -13,7 +13,6 @@
       <module fileurl="file://$PROJECT_DIR$/sbcrmex_service/sbcrmex_service.iml" filepath="$PROJECT_DIR$/sbcrmex_service/sbcrmex_service.iml" />
       <module fileurl="file://$PROJECT_DIR$/sbcrmex_system/sbcrmex_system.iml" filepath="$PROJECT_DIR$/sbcrmex_system/sbcrmex_system.iml" />
       <module fileurl="file://$PROJECT_DIR$/sbcrmex_user/sbcrmex_user.iml" filepath="$PROJECT_DIR$/sbcrmex_user/sbcrmex_user.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sbcrmex_system/sbcrmex_user (1).iml" filepath="$PROJECT_DIR$/sbcrmex_system/sbcrmex_user (1).iml" />
       <module fileurl="file://$PROJECT_DIR$/sbcrmex_web/sbcrmex_web.iml" filepath="$PROJECT_DIR$/sbcrmex_web/sbcrmex_web.iml" />
     </modules>
   </component>

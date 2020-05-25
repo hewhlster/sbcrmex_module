@@ -1,9 +1,13 @@
 package org.fjh.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 
 public class RoleExample implements Serializable {
     protected String orderByClause;

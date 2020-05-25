@@ -1,5 +1,6 @@
 package org.fjh.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
@@ -8,6 +9,8 @@ import java.util.Date;
 
 @Data
 @ApiModel(value = "SaleChance", description = "销售机会")
+@TableName("tbl_sale_chance")
+
 public class SaleChance implements Serializable {
     private String id;
 

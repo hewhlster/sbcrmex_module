@@ -27,7 +27,7 @@ public class Swagger2ConfigBean {
         return new Docket(DocumentationType.SWAGGER_2)
                 .pathMapping("/")
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("org.fjh"))
+                .apis(RequestHandlerSelectors.basePackage("org.fjh.action"))
                 .paths(PathSelectors.any())
                 .build().apiInfo(jackApiInfo());
     }
@@ -37,7 +37,7 @@ public class Swagger2ConfigBean {
                 .title("SB_CRM接口文档")
                 .description("java教学项目")
                 .version("0.0.1")
-                .contact(new Contact("联系信息", "######", "hewlh@163.com"))
+                .contact(new Contact("联系信息", "http://www.baidu.com", "hewlh@163.com"))
                 .license("樊建华")
                 .build();
     }

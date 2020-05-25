@@ -328,7 +328,15 @@
   -->
 
     <select id="selectUsersByRid" resultMap="BaseResultMap">
-      select *from tbl_user where rid=#{rid}
+        SELECT
+        tbl_user.*
+        FROM
+            `tbl_user_role`
+            INNER JOIN `tbl_user`
+                ON (`tbl_user_role`.`uid` = `tbl_user`.`id`)
+            INNER JOIN `tbl_role`
+                ON (`tbl_user_role`.`rid` = `tbl_role`.`id`)
+                AND tbl_role.`id`=#{rid}
   </select>
 
     <select id="listPage" resultMap="BaseResultMap">

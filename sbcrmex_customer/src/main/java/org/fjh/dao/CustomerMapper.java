@@ -6,9 +6,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Component
-public interface CustomerMapper extends BaseMapper<Customer, CustomerExample> {
+public interface CustomerMapper extends BaseMapper<Customer> {
 
     public List lostListPage(Map params);
 }

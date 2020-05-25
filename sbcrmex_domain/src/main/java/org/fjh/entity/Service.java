@@ -1,5 +1,6 @@
 package org.fjh.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -10,6 +11,7 @@ import java.util.List;
 
 @Data
 @ApiModel("服务")
+@TableName("tbl_service")
 public class Service implements Serializable {
     private String id;
 

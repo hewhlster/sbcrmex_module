@@ -1,11 +1,14 @@
 package org.fjh.entity;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
 @Data
+@TableName("tbl_service_items")
+
 public class ServiceItems implements Serializable {
     private String id;
 

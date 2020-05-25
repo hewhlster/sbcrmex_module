@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 
 @Service
-@Component
 public class ReportServiceImpl extends BaseServiceImpl<Object> implements IReportService {
 
     private ReportMapper mapper;

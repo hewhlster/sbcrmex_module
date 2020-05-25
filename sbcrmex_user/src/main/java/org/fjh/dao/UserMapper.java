@@ -5,9 +5,20 @@ import org.fjh.entity.UserExample;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+/*@Component
+public interface UserMapper extends BaseMapper<User, UserExample> {
+
+    public User selectUserRoleByPk(String id);
+
+    public List<User> selectUsersByRid(String rid);
+
+    public User selectUserRoleById(String uid);
+}*/
 
 @Component
-public interface UserMapper extends BaseMapper<User, UserExample> {
+public interface UserMapper extends BaseMapper<User> {
 
     public User selectUserRoleByPk(String id);
 

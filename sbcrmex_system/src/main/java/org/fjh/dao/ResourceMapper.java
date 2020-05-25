@@ -8,9 +8,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 @Component
-public interface ResourceMapper extends BaseMapper<Resource, ResourceExample> {
+public interface ResourceMapper extends BaseMapper<Resource> {
     List<HashMap<String, Object>>  selectResourceByRidEx(String id);
     List<Resource> selectResourceByRid(String id);
 

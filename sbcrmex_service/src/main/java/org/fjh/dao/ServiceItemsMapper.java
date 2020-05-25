@@ -3,11 +3,12 @@ package org.fjh.dao;
 import org.fjh.entity.ServiceItems;
 import org.fjh.entity.ServiceItemsExample;
 import org.springframework.stereotype.Component;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 import java.util.List;
 
 @Component
-public interface ServiceItemsMapper extends BaseMapper<ServiceItems, ServiceItemsExample> {
+public interface ServiceItemsMapper extends BaseMapper<ServiceItems> {
     /**
     * @方法名:selectBySid
     * @作用:根据服务ID取得服务项目列表

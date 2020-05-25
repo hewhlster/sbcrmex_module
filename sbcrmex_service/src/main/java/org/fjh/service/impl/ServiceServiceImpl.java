@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Service
-@Component
 public class ServiceServiceImpl extends BaseServiceImpl<org.fjh.entity.Service> implements IServiceService {
 
 

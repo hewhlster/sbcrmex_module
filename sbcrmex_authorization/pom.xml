@@ -12,7 +12,7 @@
     </parent>
 
     <artifactId>sbcrmex_authorization</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>

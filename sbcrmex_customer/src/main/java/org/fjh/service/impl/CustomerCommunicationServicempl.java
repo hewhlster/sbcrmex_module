@@ -24,7 +24,7 @@ public class CustomerCommunicationServicempl extends BaseServiceImpl<CustomerCom
 
     @Override
     public Integer addCommunication(CustomerCommunication cc) {
-        return customerCommunicationMapper.insertSelective(cc);
+        return customerCommunicationMapper.insert(cc);
     }
 
 

@@ -24,7 +24,6 @@
             <groupId>org.fjh</groupId>
             <artifactId>sbcrmex_domain</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>

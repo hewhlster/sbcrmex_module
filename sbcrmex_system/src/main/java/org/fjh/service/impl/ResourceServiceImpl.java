@@ -171,16 +171,16 @@ public class ResourceServiceImpl
         // 最好用递归删除
 
         // 先删除子数据
-        resourceMapper.deleteByPrimaryKey(id);
+        resourceMapper.deleteById(id);
         // 删除数据
-        ret = resourceMapper.deleteByPrimaryKey(id);
+        ret = resourceMapper.deleteById(id);
 
         return ret;
     }
 
     @Override
     public List<Resource> selectAll() {
-        return resourceMapper.selectByExample(new ResourceExample());
+        return resourceMapper.selectList(null);
     }
 
 
@@ -324,7 +324,7 @@ public class ResourceServiceImpl
     @Override
     public TreeNode getAllResourceConvertToTree() {
         // TODO Auto-generated method stub
-        List<Resource> resourcesList = resourceMapper.selectByExample(new ResourceExample());
+        List<Resource> resourcesList = resourceMapper.selectList(null);
 
         List<TreeNode> treeNodeList = new ArrayList<>();
         for (Resource temp : resourcesList) {
