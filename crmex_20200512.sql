@@ -154,7 +154,7 @@ CREATE TABLE `tbl_opt_log` (
   `datas` text COMMENT '请求数据',
   `user` varchar(100) DEFAULT NULL COMMENT '操作者',
   `date` datetime DEFAULT NULL COMMENT '操作日期',
-  `ret` varchar(10) DEFAULT NULL COMMENT '操作结果',
+  `ret` text DEFAULT NULL COMMENT '操作结果',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -421,8 +421,8 @@ DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `serviceComposeProc`(in bdate datetime,in edate datetime)
 BEGIN
-	
-	
+
+
     END */$$
 DELIMITER ;
 

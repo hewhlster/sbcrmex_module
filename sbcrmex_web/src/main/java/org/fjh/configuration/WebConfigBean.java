@@ -29,11 +29,11 @@ import java.util.List;
 @SuppressWarnings("deprecation")
 public class WebConfigBean implements WebMvcConfigurer {
     //##################springmvc interceptor######################
-    @Bean
+/*    @Bean
     public IsLoginedIntercept isLoginedIntercept() {
         return new IsLoginedIntercept();
-    }
-
+    }*/
+/*
     @Bean
     public LogIntercept logIntercept() {
         return new LogIntercept();
@@ -42,15 +42,15 @@ public class WebConfigBean implements WebMvcConfigurer {
     @Bean
     public RoleIntercept roleIntercept() {
         return new RoleIntercept();
-    }
+    }*/
 
     //配置拦截器
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 
-        IsLoginedIntercept isloginedIntercept = isLoginedIntercept();
-        LogIntercept logIntercept = logIntercept();
-        RoleIntercept roleIntercept = roleIntercept();
+       // IsLoginedIntercept isloginedIntercept = isLoginedIntercept();
+       // LogIntercept logIntercept = logIntercept();
+       // RoleIntercept roleIntercept = roleIntercept();
 
         List<String> excludepatterns = new ArrayList<String>();
         //excludepatterns.add("/static/**"); 此法没有效果
@@ -82,6 +82,7 @@ public class WebConfigBean implements WebMvcConfigurer {
         excludepatterns.add("/user/ajax_login");
         //excludepatterns.add("/user/user_main_view");
 
+        //以下内容以交由 SpringSecurity处理，日志经交由LogAspect处理
         //注册拦截器
         //registry.addInterceptor(isloginedIntercept).excludePathPatterns(excludepatterns).addPathPatterns("/**");
         //registry.addInterceptor(logIntercept).excludePathPatterns(excludepatterns).addPathPatterns("/**");

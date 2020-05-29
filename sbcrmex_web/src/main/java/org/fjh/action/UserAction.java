@@ -147,13 +147,13 @@ public class UserAction extends BaseAction {
 
     }
 
-    @GetMapping("/user_update")
+    @PostMapping("/user_update")
     public @ResponseBody
-    Map modifyAccount(User user) {
+    ResponseResult modifyAccount(User user) {
         int ret = userService.updateUser(user);
         Map map = new HashMap();
         map.put("msg", "ok");
-        return map;
+        return ResponseResult.ok();
     }
 
     @ApiOperation("增加用户")

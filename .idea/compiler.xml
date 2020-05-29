@@ -35,6 +35,7 @@
       <module name="sbcrmex_user" target="1.8" />
       <module name="sbcrmex_user (1)" target="1.8" />
       <module name="sbcrmex_web" target="1.8" />
+      <module name="sbcrmex_web_vue" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

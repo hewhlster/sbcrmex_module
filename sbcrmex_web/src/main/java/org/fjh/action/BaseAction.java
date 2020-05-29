@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -34,6 +36,14 @@ public class BaseAction {
     private HttpServletRequest request;
     private HttpServletResponse response;
     private HttpSession session;
+
+
+
+    @ExceptionHandler
+    public String error(HttpServletRequest request, Exception ex){
+        request.setAttribute("ex",ex);
+        return "error";
+    }
 
     public HttpServletRequest getRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
