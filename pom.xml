@@ -39,7 +39,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <fastjson>1.2.47</fastjson>
         <mybatis-spring>2.1.0</mybatis-spring>
-        <mysql-connector-java>6.0.6</mysql-connector-java>
+        <mysql-connector-java>8.0.16</mysql-connector-java>
         <druid>1.1.10</druid>
         <lombok>1.18.10</lombok>
         <slf4j-api>1.7.26</slf4j-api>
